@@ -149,7 +149,7 @@ $dt= date('Y-m-d');
                 <div class="account-wrap">
                   <div class="account-item clearfix js-item-menu"  style="margin-left: 950px;">
                     <div class="content">
-                      <a class="js-acc-btn" href="#">Customers</a>
+                      <a class="js-acc-btn" href="#"><?php echo $name; ?></a>
                     </div>
                     <div class="account-dropdown js-dropdown">
                       <div class="account-dropdown__footer">

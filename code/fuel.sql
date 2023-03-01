@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2022 at 04:23 PM
+-- Generation Time: Mar 01, 2023 at 12:25 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 7.4.30
 
@@ -43,40 +43,16 @@ CREATE TABLE `fuel` (
   `fid` int(11) NOT NULL,
   `date` date NOT NULL,
   `fuel_type` varchar(12) NOT NULL,
-  `price` int(11) NOT NULL
+  `price` varchar(11) NOT NULL,
+  `stock` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `fuel`
 --
 
-INSERT INTO `fuel` (`fid`, `date`, `fuel_type`, `price`) VALUES
-(4, '2022-11-04', 'Petrol', 6565),
-(5, '2022-11-04', 'Diesel', 845),
-(6, '2022-11-04', 'CNG', 585),
-(7, '2022-11-04', 'Petrol', 234),
-(8, '2022-11-04', 'Diesel', 522),
-(9, '2022-11-04', 'CNG', 258),
-(10, '2022-11-04', 'Petrol', 522),
-(11, '2022-11-04', 'Petrol', 1),
-(12, '2022-11-05', 'Diesel', 234),
-(13, '2022-11-05', 'Petrol', 100),
-(14, '2022-11-05', 'Diesel', 789),
-(15, '2022-11-06', 'Petrol', 106),
-(16, '2022-11-06', 'Diesel', 98),
-(18, '2022-11-06', 'CNG', 75),
-(19, '2022-11-07', 'Petrol', 100),
-(20, '2022-11-07', 'Diesel', 90),
-(21, '2022-11-07', 'CNG', 79),
-(22, '2022-11-11', 'Diesel', 78),
-(23, '2022-11-15', 'Petrol', 120),
-(24, '2022-11-15', 'Diesel', 90),
-(25, '2022-11-15', 'CNG', 78),
-(26, '2022-11-16', 'Petrol', 100),
-(27, '2022-11-16', 'Diesel', 89),
-(28, '2022-11-16', 'CNG', 88),
-(29, '2022-11-16', 'Petrol', -50000),
-(30, '2022-11-16', 'Petrol', 0);
+INSERT INTO `fuel` (`fid`, `date`, `fuel_type`, `price`, `stock`) VALUES
+(17, '2023-03-01', 'Petrol', '120', 494);
 
 -- --------------------------------------------------------
 
@@ -97,17 +73,9 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`log_id`, `username`, `passwd`, `usertype`, `statuss`) VALUES
-(1, 'admin', '1234', 0, 1),
-(75, 'alxrji', '12345', 1, 1),
-(76, 'aln', '123456', 1, 1),
-(77, 'alan', '1234', 2, 1),
-(78, 'alex', '12345', 2, 1),
-(79, 'nayara', '12345', 2, 1),
-(80, 'dev', '1234', 1, 1),
-(81, 'alx', 'nayara', 2, 1),
-(82, 'essar', 'essar', 2, 1),
-(83, 'dhamu', '1234', 2, 1),
-(84, 'ABC123', 'ABC123', 2, 1);
+(1, 'admin', 'admin', 0, 1),
+(2, 'alxrji', 'Alex@1234', 2, 1),
+(3, 'alnsh', '1234', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -126,15 +94,33 @@ CREATE TABLE `renter` (
   `place` varchar(23) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `renter`
+-- Table structure for table `tbl_order`
 --
 
-INSERT INTO `renter` (`user_id`, `log_id`, `fname`, `lname`, `email`, `phone`, `addresss`, `place`) VALUES
-(14, 81, 'nayara', 'fuels', 'nayarafuels@gmail.com', 6905073560, 'nayara fuels kottayam', 'Kottayam'),
-(15, 82, 'essar', 'fuels', 'essarfuels@gmail.com', 6282983345, 'essarfuels pala', 'pala'),
-(16, 83, 'bbkj', 'bjbk', 'a..le..xre.ji777@gma.com', 6282983345, 'asdfghjkuytrety', 'kottayam'),
-(17, 84, 'george', 'DDFFF', 'ASD@BD.CO', 8000000000, '@##@@', 'D!@');
+CREATE TABLE `tbl_order` (
+  `order_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `fuel` varchar(50) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `price` varchar(11) NOT NULL,
+  `date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_order`
+--
+
+INSERT INTO `tbl_order` (`order_id`, `user_id`, `fuel`, `quantity`, `price`, `date`) VALUES
+(28, 1, 'Petrol', 2, '240', '2023-03-01'),
+(29, 1, 'Petrol', 2, '240', '2023-03-01'),
+(30, 1, 'Petrol', 2, '240', '2023-03-01'),
+(31, 0, '', 0, '0', '2023-03-01'),
+(32, 0, '', 0, '0', '2023-03-01'),
+(33, 0, '', 0, '0', '2023-03-01'),
+(34, 0, '', 0, '0', '2023-03-01');
 
 -- --------------------------------------------------------
 
@@ -159,9 +145,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `log_id`, `fname`, `lname`, `email`, `phone`, `addresss`, `place`, `coin`) VALUES
-(11, 78, 'Alex', 'Reji', 'alexreji777@gmail.co', 6282983345, 'Kurisummoottil house', 'Idukki', 0),
-(12, 76, 'Alan', 'Shijo', 'alanshijo@gmail.com', 9747254577, 'Thekkel', 'Paika', 0),
-(13, 80, 'dev', 'das', 'alexreji777@gmail.co', 6282983345, 'thekkel', 'vdcasxs', 0);
+(1, 2, ' Alx', 'Reji', 'alxrji@gmail.com', 6282983345, 'qsdfgn', 'Idukki', 0),
+(2, 3, 'Alan', 'Shijo', 'alnshijo343@gmail.co', 9865452245, 'kurisummoottil', 'Idukki', 0);
 
 --
 -- Indexes for dumped tables
@@ -192,6 +177,12 @@ ALTER TABLE `renter`
   ADD PRIMARY KEY (`user_id`);
 
 --
+-- Indexes for table `tbl_order`
+--
+ALTER TABLE `tbl_order`
+  ADD PRIMARY KEY (`order_id`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -212,25 +203,31 @@ ALTER TABLE `coin`
 -- AUTO_INCREMENT for table `fuel`
 --
 ALTER TABLE `fuel`
-  MODIFY `fid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `fid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `renter`
 --
 ALTER TABLE `renter`
-  MODIFY `user_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `user_id` int(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_order`
+--
+ALTER TABLE `tbl_order`
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

@@ -189,6 +189,9 @@ if(isset($_POST['']))
                   <label for="cc-payment" class="control-label mb-1">Price</label>
                   <input id="cc-pament" placeholder="Enter Today's fuel price" onkeyup="return validate()" name="fuel-price" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
                   <span id="fmsg" style="color: red;"></span>
+                  
+                  <label for="cc-payment" class="control-label mb-1">Stock</label>
+                  <input id="cc-pament" placeholder="Stock in ltrs" onkeyup="return validate()" name="fuel-stock" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
                   <button type="submit" class="btn btn-primary" style="margin-top: -22%; margin-left: 105%;" name="submit" value="submit"ss>Update</button>
               </form>
             </div>
@@ -202,6 +205,7 @@ if(isset($_POST['']))
                           <th>Date</th>
                           <th>Fuel Type</th>
                           <th>Price</th>
+                          <th>Stock(ltr)</th>
                       </tr>
                   </thead>
                   <?php
@@ -216,6 +220,7 @@ if(isset($_POST['']))
                           <td><?php echo $row['date']; ?></td>
                           <td><?php echo $row['fuel_type']; ?></td>
                           <td><?php echo $row['price']; ?></td>
+                          <td><?php echo $row['stock']; ?></td>
                           
                       </tr>
                   </tbody>

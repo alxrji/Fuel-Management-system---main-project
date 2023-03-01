@@ -5,7 +5,7 @@ include  '../config.php';
   date_default_timezone_set("Asia/Calcutta");  
   // $dt= date('Y-m-d');
   // echo $dt;
-  if(isset($_POST['submit'])){
+  if(isset($_POST['pay'])){
     $ftype= $_POST['select'];
     $amt= $_POST['qty'];
     $dt= date('Y-m-d');
@@ -22,11 +22,11 @@ include  '../config.php';
     $in="INSERT INTO `tbl_order`(`user_id`, `fuel`, `quantity`, `price`,`date`) VALUES ('$uid','$ftype','$amt','$price','$dt')";
     $inr = mysqli_query($conn,$in);
     if($inr==true){
+      $stock_update = "UPDATE `fuel` SET `stock`=`stock`-'$amt' WHERE `fuel_type`='$ftype' AND `stock`>0";
+      $stock_update_run = mysqli_query($conn, $stock_update);
       ?>
       <script>
-        if(window.confirm("order added")){
-          window.location.href='orders.php';
-        };
+        window.location.href="orders.php";
         </script>
         <?php
     }
@@ -70,7 +70,8 @@ include  '../config.php';
   <!-- Main CSS-->
   <link href="css/theme.css" rel="stylesheet" media="all">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.9/dist/sweetalert2.all.min.js"></script>
-
+  <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </head>
 
 <body class="animsition">
@@ -201,7 +202,7 @@ include  '../config.php';
       <script>
         function check(){
           var fuel= document.getElementById("select").value;
-          var qty= document.getElementById("cc-pament").value;
+          var qty= document.getElementById("cc-payment").value;
           
           var data="fuel=" + fuel + "&qty= " + qty;
           // alert(data);
@@ -211,11 +212,11 @@ type:"post",
 data:data,
 success:function(response){
 $("#total").html(response);
+pay_now(response);
 }
 
           });
         }
-
         </script>
 
       <!-- MAIN CONTENT-->
@@ -228,7 +229,7 @@ $("#total").html(response);
           ?> -->
             <div class="row">
               
-              <form class="d-flex justify-content-center" action="" method="POST">
+              <form class="d-flex justify-content-center" action="" method="POST" id="order_form">
               <!--  -->
                 <div class="form-group mx-5">
                   
@@ -246,11 +247,13 @@ $("#total").html(response);
                 <div class="form-group" style="margin-left: 10%;">
                 <input type="hidden" value="<?php echo $userid  ?>" name="uid">
                   <label for="cc-payment" class="control-label mb-1">Quantity</label>
-                  <input id="cc-pament" placeholder="Enter The Quantity in Ltrs" name="qty" type="number" class="form-control" required="true" aria-invalid="false" onkeyup="check()" onchange="check()">
+                  <input id="cc-payment" placeholder="Enter The Quantity in Ltrs" name="qty" type="number" class="form-control" required  aria-invalid="false" onkeyup="check()" onchange="check()">
                  
-                  <button type="submit" class="btn btn-primary" style="margin-top: -25%; margin-left: 105%;" name="submit" value="submit">Buy</button>
-                  
-                 <br><span id="total"></span>
+                  <!-- <button type="submit" id="paymentclick" class="btn btn-primary" style="margin-top: -25%; margin-left: 105%;" name="submit" value="submit" onclick="pay_now()">Buy</button> -->
+                  <input type="submit" name="pay" class="btn btn-primary" style="margin-top: -25%; margin-left: 105%;" id ="pay_button" value="pay now">
+                 <br><span id="total">
+
+                 </span>
                  
               </form>
             </div>
@@ -310,7 +313,7 @@ $("#total").html(response);
 
   </div> 
 
-  <!-- Jquery JS-->
+  <!-- Jquery JS -->
     <script src="vendor/jquery-3.2.1.min.js"></script>
     <!-- Bootstrap JS-->
     <script src="vendor/bootstrap-4.1/popper.min.js"></script>
@@ -333,8 +336,46 @@ $("#total").html(response);
 
     <!-- Main JS-->
     <script src="js/main.js"></script>
-
+    <!-- "key": "rzp_test_SxxbqfYjeSQy3M", -->
 </body>
+<script>
+    function pay_now(response){
+
+    var options = {
+    "key": "rzp_test_SxxbqfYjeSQy3M",
+    "amount": response*100,
+    "currency": "INR",
+    "name": "FUEL",
+    "description": "Test Transaction",
+    "handler":function(response){
+        console.log(response);
+        jQuery.ajax({
+            type:'POST',
+            url:'orders.php',
+            data:$('#order_form').serialize(),
+            success:function(result){
+              alert(result);
+                window.location.href="orders.php";
+            }
+
+        })
+        // if(response){
+        //     window.location.href="/adsol/index.php";
+        // }
+       
+
+    }
+};
+
+var rzp1 = new Razorpay(options);
+document.getElementById('rzp-button1').onclick = function(e){
+    rzp1.open();
+    e.preventDefault();
+}
+}
+
+
+</script>
 
 </html>
 <!-- end document-->

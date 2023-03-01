@@ -56,7 +56,7 @@ if(isset($_POST['edit'])){
 
 <nav class="nav nav-borders">
 <a class="nav-link active ms-0" href="https://www.bootdey.com/snippets/view/bs5-edit-profile-account-details" target="__blank">Profile</a>
-<a class="nav-link" href="index.php" target="__blank">Home</a>
+<a class="nav-link" href="index.php">Home</a>
 
 </nav>
 <hr class="mt-0 mb-4">
@@ -71,7 +71,7 @@ if(isset($_POST['edit'])){
 
 <h3> <?php echo $name ?></h3>
 
-<button class="btn btn-primary" type="button">Upload new image</button>
+<!-- <button class="btn btn-primary" type="button">Upload new image</button> -->
 </div>
 </div>
 </div>

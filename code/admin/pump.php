@@ -14,7 +14,7 @@ include '../config.php';
   <meta name="keywords" content="au theme template">
 
   <!-- Title Page-->
-  <title>Pumps</title>
+  <title>Customers</title>
   <link rel="icon" type="image/png" href="../admin/images/icon/logo.png" />
 
   <!-- Fontfaces CSS-->
@@ -186,7 +186,7 @@ include '../config.php';
                                             </tr>
                                         </thead>
                                         <?php
-                                            $cust = "SELECT * FROM `renter`";
+                                            $cust = "SELECT * FROM `user`";
                                             $cust_run = mysqli_query($conn,$cust);
                                             $i = 1;
                                             while($row=mysqli_fetch_array($cust_run)){

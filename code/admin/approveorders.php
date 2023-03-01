@@ -45,7 +45,7 @@ include  '../config.php';
   <meta name="keywords" content="au theme template">
 
   <!-- Title Page-->
-  <title>Orders</title>
+  <title>Approve Orders</title>
   <link rel="icon" type="image/png" href="../admin/images/icon/logo.png" />
 
   <!-- Fontfaces CSS-->

@@ -68,7 +68,7 @@ include 'admin-session.php';
             </li>
             <li class="has-sub">
               <a class="js-arrow" href="#">
-                <i class="fas fa-user-alt"></i>Customers</a>
+                <i class="fas fa-user-alt"></i>Customer</a>
             </li>
             
           </ul>

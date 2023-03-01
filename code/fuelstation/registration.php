@@ -50,7 +50,8 @@ if(isset($_POST['submit'])){
 <head>
 <!-- <link rel="icon" type="image/png" href="images/icons/fuel.png"/> -->
   <title>Fuel Station Register</title>
-  <link rel="icon" type="image/png" href="images/icons/fuel.png"/>
+  <link rel="icon" type="image/png" href="../admin/images/icon/logo.png" />
+
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -144,7 +145,7 @@ if(isset($_POST['submit'])){
             <span id="passworder" style="color:red"></span>
             <input type="password" class="form-control" placeholder="Confirm password" name="cpasswd" id="cpassword" onkeyup="return validate()" required><br>
             <span id="pswd" style="color:red"></span>
-            <input type="submit" class="form-control mb-5 btn-warning" value="Register" name="submit">
+            <input type="submit" class="form-control mb-5 btn-primary" value="Register" name="submit">
     </div></center>
 </form>
 

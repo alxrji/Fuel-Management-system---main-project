@@ -1,4 +1,5 @@
 <?php
+session_start();
     include  '../config.php';
     date_default_timezone_set("Asia/Calcutta"); 
     if(isset($_POST['qty'])){
@@ -9,19 +10,16 @@
 
         $fuel = "SELECT * FROM `fuel` WHERE `fuel_type`='$ftype' and `date`='$dt'";
         $result = mysqli_query($conn,$fuel);
-        
+        if($_POST['qty']>0){
         while($row=mysqli_fetch_array($result)){
             $price= $row['price']*$amt;
             // echo ("<script LANGUAGE='JavaScript'>
             //         window.alert('Total Price is:".$price."');
             //         window.location.href='orders.php';
             //         </script>");
-            echo '<span> Total price is ',$price,'</span>';
+            echo $price;
                     
-        }
+        }}
     }
-
-
-    
 
 ?>
