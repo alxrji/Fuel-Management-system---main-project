@@ -90,7 +90,7 @@ $dt= date('Y-m-d');
         </a> -->
         <img src="images/icon/logo.png" alt="" width="40px" height="40px">&ensp;
         <h1>
-          FUEL
+          Xfuel
         </h1>
       </div>
       <div class="menu-sidebar__content js-scrollbar1">
@@ -178,42 +178,98 @@ $dt= date('Y-m-d');
             <div class="row m-t-30" style="width: 100%;">
               <div class="col-md-12">
                 <h1>Today's Price</h1>
+                
                 <!-- DATA TABLE-->
-                <table class="table table-borderless table-data3">
-                  <thead>
-                      <tr>             
-                          <th>Sl_no</th>
-                          <th>Date</th>
-                          <th>Fuel Type</th>
-                          <th>Price</th>
-                      </tr>
-                  </thead>
-                  <?php
-                      $fuel1 = "SELECT * FROM `fuel` WHERE date='$dt'";
-                      $result1 = mysqli_query($conn,$fuel1);
-                      $i = 1;
-                      while($row1=mysqli_fetch_array($result1)){
-                  ?>
-                  <tbody>
-                      <tr>
-                          <td><?php echo $i; ?></td>
-                          <td><?php echo $row1['date']; ?></td>
-                          <td><?php echo $row1['fuel_type']; ?></td>
-                          <td><?php echo $row1['price']; ?></td>
-                          
-                      </tr>
-                  </tbody>
-                  <?php    
-                  $i++;}?>
-                </table>
-                <!-- END DATA TABLE-->
-              </div>
-            </div>
+                
+            <div class="row m-t-25">
+              
 
+              <div class="col-sm-6 col-lg-3">
+                <div class="overview-item overview-item--c2">
+                  <div class="overview__inner">
+                    <div class="overview-box clearfix">
+                      <!-- <div class="icon">
+                        <i> <img src="https://icons8.com/icon/8712/gas-station" alt=""></i>
+                      </div> -->
+                      <!-- <img src="https://icons8.com/icon/8712/gas-station" alt=""> -->
+                      <div class="icon">
+                      <i class="bi bi-fuel-pump"></i>
+                          <path d="M3 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-.5.5h-5a.5.5 0 0 1-.5-.5v-5Z" />
+                          <path d="M1 2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v8a2 2 0 0 1 2 2v.5a.5.5 0 0 0 1 0V8h-.5a.5.5 0 0 1-.5-.5V4.375a.5.5 0 0 1 .5-.5h1.495c-.011-.476-.053-.894-.201-1.222a.97.97 0 0 0-.394-.458c-.184-.11-.464-.195-.9-.195a.5.5 0 0 1 0-1c.564 0 1.034.11 1.412.336.383.228.634.551.794.907.295.655.294 1.465.294 2.081v3.175a.5.5 0 0 1-.5.501H15v4.5a1.5 1.5 0 0 1-3 0V12a1 1 0 0 0-1-1v4h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V2Zm9 0a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v13h8V2Z" />
+                        </svg>
+                      </div>
+                      <?php
+                      require '../config.php';
+                      $count_petrol = "SELECT * FROM `fuel` WHERE fuel_type='Petrol' ORDER BY `fid`DESC LIMIT 1 ";
+                      $count_petrol_run = mysqli_query($conn, $count_petrol);
+                      $count_petrol_count = mysqli_fetch_array($count_petrol_run);
+                      ?>
+                      <div class="text">
+                        <h2><?php echo "₹".$count_petrol_count['price'];
+                            ?></h2>
+                        <span>Petrol</span>
+                      </div>
+                    </div>
+
+                    <div class="overview-chart">
+                      <!-- <canvas id="widgetChart2"></canvas> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-lg-3">
+                <div class="overview-item overview-item--c3">
+                  <div class="overview__inner">
+                    <div class="overview-box clearfix">
+                      <div class="icon">
+                      <i class="bi bi-fuel-pump-diesel-fill"></i>
+                      </div>
+                      <div class="text">
+                      <?php
+                      require '../config.php';
+                      $count_Diesel = "SELECT * FROM `fuel` WHERE fuel_type='Diesel' ORDER BY `fid`DESC LIMIT 1 ";
+                      $count_Diesel_run = mysqli_query($conn, $count_Diesel);
+                      $count_Diesel_count = mysqli_fetch_array($count_Diesel_run);
+                      ?><h2><?php echo "₹". $count_Diesel_count['price'];
+                      ?></h2>
+                        <span>DIESEL</span>
+                      </div>
+                    </div>
+                    <div class="overview-chart">
+                      <!-- <canvas id="widgetChart3"></canvas> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-lg-3">
+                <div class="overview-item overview-item--c4">
+                  <div class="overview__inner">
+                    <div class="overview-box clearfix">
+                      <div class="icon">
+                      <i class="bi bi-fire"></i>
+                      </div>
+                      <div class="text">
+                      <?php
+                      require '../config.php';
+                      $count_CNG = "SELECT * FROM `fuel` WHERE fuel_type='CNG' ORDER BY `fid`DESC LIMIT 1 ";
+                      $count_CNG_run = mysqli_query($conn, $count_CNG);
+                      $count_CNG_count = mysqli_fetch_array($count_CNG_run);
+                      ?>
+                        <h2><?php echo "₹". $count_CNG_count['price'];
+                      ?></h2>
+                        <span>CNG</span>
+                      </div>
+                    </div>
+                    <div class="overview-chart">
+                      <!-- <canvas id="widgetChart4"></canvas> -->
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+              
+            
             </div>
-           
-            <div class="row m-t-30" style="width: 100%;">
-              <div class="col-md-12">
                 <!-- DATA TABLE-->
                
     <!-- END MAIN CONTENT -->

@@ -89,7 +89,7 @@ $name = $_SESSION['username'];
         </a> -->
         <img src="images/icon/logo.png" alt="" width="40px" height="40px">&ensp;
         <h1>
-          FUEL
+          Xfuel
         </h1>
       </div>
       <div class="menu-sidebar__content js-scrollbar1">

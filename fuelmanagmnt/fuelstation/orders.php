@@ -136,7 +136,7 @@ $fco=$c+$co;
         </a> -->
         <img src="images/icon/logo.png" alt="" width="40px" height="40px">&ensp;
         <h1>
-          FUEL
+          Xfuel
         </h1>
       </div>
       <div class="menu-sidebar__content js-scrollbar1">
@@ -288,6 +288,8 @@ $("#total").html(response);
                           <th>Fuel Type</th>
                           <th>Quantity</th>
                           <th>Price</th>
+                          <th>Invoice</th>
+                          
                       </tr>
                   </thead>
                   <?php
@@ -303,6 +305,7 @@ $("#total").html(response);
                           <td><?php echo $row['date']; ?></td>
                           <td><?php echo $row['fuel']; ?></td>
                           <td><?php echo $row['quantity']; ?></td>
+                          <td><?php echo $row['price']; ?></td>
                           <td><?php echo $row['price']; ?></td>
                           
                       </tr>
