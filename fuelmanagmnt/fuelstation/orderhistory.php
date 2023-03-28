@@ -38,11 +38,167 @@ $dt= date('Y-m-d');
   <link href="vendor/slick/slick.css" rel="stylesheet" media="all">
   <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
   <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+  <link rel="stylesheet" href="https://allyoucan.cloud/cdn/icofont/1.0.1/icofont.css" integrity="sha384-jbCTJB16Q17718YM9U22iJkhuGbS0Gd2LjaWb4YJEZToOPmnKDjySVa323U+W7Fv" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>    
+
   <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 
   <!-- Main CSS-->
   <link href="css/theme.css" rel="stylesheet" media="all">
+  <style>
+        body {
+            margin-top: 20px;
+            background: #eee;
+        }
 
+        /* My Account */
+        .payments-item img.mr-3 {
+            width: 47px;
+        }
+
+        .order-list .btn {
+            border-radius: 2px;
+            min-width: 121px;
+            font-size: 13px;
+            padding: 7px 0 7px 0;
+        }
+
+        .osahan-account-page-left .nav-link {
+            padding: 18px 20px;
+            border: none;
+            font-weight: 600;
+            color: #535665;
+        }
+
+        .osahan-account-page-left .nav-link i {
+            width: 28px;
+            height: 28px;
+            background: #535665;
+            display: inline-block;
+            text-align: center;
+            line-height: 29px;
+            font-size: 15px;
+            border-radius: 50px;
+            margin: 0 7px 0 0px;
+            color: #fff;
+        }
+
+        .osahan-account-page-left .nav-link.active {
+            background: #f3f7f8;
+            color: #282c3f !important;
+        }
+
+        .osahan-account-page-left .nav-link.active i {
+            background: #282c3f !important;
+        }
+
+        .osahan-user-media img {
+            width: 90px;
+        }
+
+        .card offer-card h5.card-title {
+            border: 2px dotted #000;
+        }
+
+        .card.offer-card h5 {
+            border: 1px dotted #daceb7;
+            display: inline-table;
+            color: #17a2b8;
+            margin: 0 0 19px 0;
+            font-size: 15px;
+            padding: 6px 10px 6px 6px;
+            border-radius: 2px;
+            background: #fffae6;
+            position: relative;
+        }
+
+        .card.offer-card h5 img {
+            height: 22px;
+            object-fit: cover;
+            width: 22px;
+            margin: 0 8px 0 0;
+            border-radius: 2px;
+        }
+
+        .card.offer-card h5:after {
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-bottom: 4px solid #daceb7;
+            content: "";
+            left: 30px;
+            position: absolute;
+            bottom: 0;
+        }
+
+        .card.offer-card h5:before {
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 4px solid #daceb7;
+            content: "";
+            left: 30px;
+            position: absolute;
+            top: 0;
+        }
+
+        .payments-item .media {
+            align-items: center;
+        }
+
+        .payments-item .media img {
+            margin: 0 40px 0 11px !important;
+        }
+
+        .reviews-members .media .mr-3 {
+            width: 56px;
+            height: 56px;
+            object-fit: cover;
+        }
+
+        .order-list img.mr-4 {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
+            border-radius: 2px;
+        }
+
+        .osahan-cart-item p.text-gray.float-right {
+            margin: 3px 0 0 0;
+            font-size: 12px;
+        }
+
+        .osahan-cart-item .food-item {
+            vertical-align: bottom;
+        }
+
+        .h1,
+        .h2,
+        .h3,
+        .h4,
+        .h5,
+        .h6,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: #000000;
+        }
+
+        .shadow-sm {
+            box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
+        }
+
+        .rounded-pill {
+            border-radius: 50rem !important;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+    </style>
 </head>
 
 <body class="animsition">
@@ -100,7 +256,7 @@ $dt= date('Y-m-d');
               <a class="js-arrow" href="#">
               <i class='fas fa-user-circle'></i><?php echo $name; ?></a>
             </li>
-            <li class="active has-sub">
+            <li class=" has-sub">
            
               <a class="js-arrow" href="index.php">
               <i class="fas fa-tachometer-alt"></i>Dashboard</a>
@@ -109,7 +265,7 @@ $dt= date('Y-m-d');
               <a class="js-arrow" href="orders.php">
               <i class="fas fa-shopping-cart"></i>Buy Fuel</a>
             </li>
-            <li class="has-sub">
+            <li class="has-sub active">
               <a class="js-arrow" href="orderhistory.php">
               <i class='bi bi-bag-check-fill'></i>My Orders</a>
             </li>
@@ -174,104 +330,47 @@ $dt= date('Y-m-d');
 
       <!-- MAIN CONTENT-->
       <div class="main-content">
-        <div class="section__content section__content--p30">
-      
-        
-          <div class="container-fluid">
-            <div class="row">
+      <div class="col-md-12">
+                <div class="osahan-account-page-right shadow-sm bg-white p-4 h-100">
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane  fade  active show" id="orders" role="tabpanel" aria-labelledby="orders-tab">
+                            <h4 class="font-weight-bold mt-0 mb-4">Order History</h4>
+                            <div class="bg-white card mb-4 order-list shadow-sm">
+                                <div class="gold-members p-4">
+                                    <a href="#">
+                                    </a>
+                                    <div class="media">
+                                        <a href="#">
+                                        </a>
+                                        <div class="media-body">
+                                            <a href="#">
+                                                <span class="float-right text-info">Delivered on Mon, Nov 12, 7:18 PM <i class="icofont-check-circled text-success"></i></span>
+                                            </a>
+                                            <h6 class="mb-2">
+                                                <a href="#"></a>
+                                                <a href="#" class="text-black">Gus's World Famous Fried Chicken</a>
+                                            </h6>
+                                            <p class="text-gray mb-1"><i class="icofont-location-arrow"></i> 730 S Mendenhall Rd, Memphis, TN 38117, USA
+                                            </p>
+                                            <p class="text-gray mb-3"><i class="icofont-list"></i> ORDER #25102589748 <i class="icofont-clock-time ml-2"></i> Mon, Nov 12, 6:26 PM</p>
+                                            <p class="text-dark">Veg Masala Roll x 1, Veg Burger x 1, Veg Penne Pasta in Red Sauce x 1
+                                            </p>
+                                            <hr>
+                                            <div class="float-right">
+                                                <a class="btn btn-sm btn-outline-primary" href="#"><i class="icofont-headphone-alt"></i> HELP</a>
+                                                <a class="btn btn-sm btn-primary" href="#"><i class="icofont-refresh"></i> REORDER</a>
+                                            </div>
+                                            <p class="mb-0 text-black text-primary pt-2"><span class="text-black font-weight-bold"> Total Paid:</span> $300
+                                            </p>
+                                        </div>
+                                    </div>
 
-            <div class="row m-t-30" style="width: 100%;">
-              <div class="col-md-12">
-                <h1>Today's Price</h1>
-                
-                <!-- DATA TABLE-->
-                
-            <div class="row m-t-25">
-              
-
-              <div class="col-sm-6 col-lg-3">
-                <div class="overview-item overview-item--c2">
-                  <div class="overview__inner">
-                    <div class="overview-box clearfix">
-                      <!-- <div class="icon">
-                        <i> <img src="https://icons8.com/icon/8712/gas-station" alt=""></i>
-                      </div> -->
-                      <!-- <img src="https://icons8.com/icon/8712/gas-station" alt=""> -->
-                      <div class="icon">
-                      <i class="bi bi-fuel-pump"></i>
-                          <path d="M3 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-.5.5h-5a.5.5 0 0 1-.5-.5v-5Z" />
-                          <path d="M1 2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v8a2 2 0 0 1 2 2v.5a.5.5 0 0 0 1 0V8h-.5a.5.5 0 0 1-.5-.5V4.375a.5.5 0 0 1 .5-.5h1.495c-.011-.476-.053-.894-.201-1.222a.97.97 0 0 0-.394-.458c-.184-.11-.464-.195-.9-.195a.5.5 0 0 1 0-1c.564 0 1.034.11 1.412.336.383.228.634.551.794.907.295.655.294 1.465.294 2.081v3.175a.5.5 0 0 1-.5.501H15v4.5a1.5 1.5 0 0 1-3 0V12a1 1 0 0 0-1-1v4h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V2Zm9 0a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v13h8V2Z" />
-                        </svg>
-                      </div>
-                      <?php
-                      require '../config.php';
-                      $count_petrol = "SELECT * FROM `fuel` WHERE fuel_type='Petrol' ORDER BY `fid`DESC LIMIT 1 ";
-                      $count_petrol_run = mysqli_query($conn, $count_petrol);
-                      $count_petrol_count = mysqli_fetch_array($count_petrol_run);
-                      ?>
-                      <div class="text">
-                        <h2><?php echo "₹".$count_petrol_count['price'];
-                            ?></h2>
-                        <span>Petrol</span>
-                      </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="overview-chart">
-                      <!-- <canvas id="widgetChart2"></canvas> -->
-                    </div>
-                  </div>
                 </div>
-              </div>
-              <div class="col-sm-6 col-lg-3">
-                <div class="overview-item overview-item--c3">
-                  <div class="overview__inner">
-                    <div class="overview-box clearfix">
-                      <div class="icon">
-                      <i class="bi bi-fuel-pump-diesel-fill"></i>
-                      </div>
-                      <div class="text">
-                      <?php
-                      require '../config.php';
-                      $count_Diesel = "SELECT * FROM `fuel` WHERE fuel_type='Diesel' ORDER BY `fid`DESC LIMIT 1 ";
-                      $count_Diesel_run = mysqli_query($conn, $count_Diesel);
-                      $count_Diesel_count = mysqli_fetch_array($count_Diesel_run);
-                      ?><h2><?php echo "₹". $count_Diesel_count['price'];
-                      ?></h2>
-                        <span>DIESEL</span>
-                      </div>
-                    </div>
-                    <div class="overview-chart">
-                      <!-- <canvas id="widgetChart3"></canvas> -->
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-lg-3">
-                <div class="overview-item overview-item--c4">
-                  <div class="overview__inner">
-                    <div class="overview-box clearfix">
-                      <div class="icon">
-                      <i class="bi bi-fire"></i>
-                      </div>
-                      <div class="text">
-                      <?php
-                      require '../config.php';
-                      $count_CNG = "SELECT * FROM `fuel` WHERE fuel_type='CNG' ORDER BY `fid`DESC LIMIT 1 ";
-                      $count_CNG_run = mysqli_query($conn, $count_CNG);
-                      $count_CNG_count = mysqli_fetch_array($count_CNG_run);
-                      ?>
-                        <h2><?php echo "₹". $count_CNG_count['price'];
-                      ?></h2>
-                        <span>CNG</span>
-                      </div>
-                    </div>
-                    <div class="overview-chart">
-                      <!-- <canvas id="widgetChart4"></canvas> -->
-                    </div>
-                  </div>
-                </div>
-                
-              </div>
+            </div>
               
             
             </div>

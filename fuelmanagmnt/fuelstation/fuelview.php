@@ -108,7 +108,11 @@ $name = $_SESSION['username'];
             </li>
             <li class="has-sub">
               <a class="js-arrow" href="orders.php">
-              <i class="fas fa-shopping-cart"></i>Orders</a>
+              <i class="fas fa-shopping-cart"></i>Buy Fuel</a>
+            </li>
+            <li class="has-sub">
+              <a class="js-arrow" href="orderhistory.php">
+              <i class='bi bi-bag-check-fill'></i>My Orders</a>
             </li>
             <li class="has-sub">
               <a class="js-arrow" href="fuelview.php">
