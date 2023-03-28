@@ -299,6 +299,7 @@ $dt= date('Y-m-d');
                      
                       $row12=mysqli_fetch_array($result12);
                       $coin=$row12['coin'];
+                      $uid=$row12['user_id'];
                       
                       ?>
       <img src="images/icon/dollar.png" alt="" width="30px" height="30px"> <?php echo $coin ?>
@@ -329,12 +330,21 @@ $dt= date('Y-m-d');
       <!-- HEADER DESKTOP-->
 
       <!-- MAIN CONTENT-->
+      <?php
+                       $fuel = "SELECT * FROM `tbl_order` where user_id='$uid' ORDER BY order_id DESC ";
+                      $result = mysqli_query($conn,$fuel);
+                      $i = 1;
+                  ?>
       <div class="main-content">
       <div class="col-md-12">
                 <div class="osahan-account-page-right shadow-sm bg-white p-4 h-100">
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane  fade  active show" id="orders" role="tabpanel" aria-labelledby="orders-tab">
                             <h4 class="font-weight-bold mt-0 mb-4">Order History</h4>
+                            <?php
+                            
+                      while($row=mysqli_fetch_array($result)){
+                        ?>
                             <div class="bg-white card mb-4 order-list shadow-sm">
                                 <div class="gold-members p-4">
                                     <a href="#">
@@ -344,29 +354,32 @@ $dt= date('Y-m-d');
                                         </a>
                                         <div class="media-body">
                                             <a href="#">
-                                                <span class="float-right text-info">Delivered on Mon, Nov 12, 7:18 PM <i class="icofont-check-circled text-success"></i></span>
+                                                <span class="float-right text-info">Fuel type : <?php echo $row['fuel']; ?> <i class="icofont-check-circled text-success"></i></span>
                                             </a>
-                                            <h6 class="mb-2">
+                                            <!-- <h6 class="mb-2">
                                                 <a href="#"></a>
-                                                <a href="#" class="text-black">Gus's World Famous Fried Chicken</a>
+                                                <a href="#" class="text-black">Gus's World Famous Fried Chicken</a> 
                                             </h6>
                                             <p class="text-gray mb-1"><i class="icofont-location-arrow"></i> 730 S Mendenhall Rd, Memphis, TN 38117, USA
-                                            </p>
-                                            <p class="text-gray mb-3"><i class="icofont-list"></i> ORDER #25102589748 <i class="icofont-clock-time ml-2"></i> Mon, Nov 12, 6:26 PM</p>
-                                            <p class="text-dark">Veg Masala Roll x 1, Veg Burger x 1, Veg Penne Pasta in Red Sauce x 1
+                                            </p> -->
+                                            <p class="text-gray mb-3"><i class="icofont-list"></i> ORDER #<?php echo $row['order_id']; ?> <i class="icofont-clock-time ml-2"></i>Date : <?php echo $row['date']; ?></p>
+                                            <p class="text-dark">Quantity : <?php echo $row['quantity']; ?> L
                                             </p>
                                             <hr>
                                             <div class="float-right">
-                                                <a class="btn btn-sm btn-outline-primary" href="#"><i class="icofont-headphone-alt"></i> HELP</a>
+                                                <a class="btn btn-sm btn-outline-primary" href="bill.php"><i class="icofont-headphone-alt"></i>INVOICE</a> 
                                                 <a class="btn btn-sm btn-primary" href="#"><i class="icofont-refresh"></i> REORDER</a>
                                             </div>
-                                            <p class="mb-0 text-black text-primary pt-2"><span class="text-black font-weight-bold"> Total Paid:</span> $300
+                                            <p class="mb-0 text-black text-primary pt-2"><span class="text-black font-weight-bold"> Total Paid:</span> <?php echo '₹'.$row['price']; ?>
                                             </p>
                                         </div>
                                     </div>
 
                                 </div>
                             </div>
+                            
+            <?php    
+                  $i++;}?>
                         </div>
                     </div>
                 </div>

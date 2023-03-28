@@ -27,6 +27,10 @@ $sql="Select "
     "name": "FUEL",
     "description": "Test Transaction",
     "image": "https://drive.google.com/file/d/1FJCNPPMhML96z3s4IrR8-yGU4A6HLm2X/view?usp=share_link",
+    
+    "theme":{
+        "color": "#09746c"
+    },
     "handler":function(response){
         console.log(response);
         jQuery.ajax({
