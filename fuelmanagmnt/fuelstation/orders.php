@@ -270,8 +270,8 @@ $("#total").html(response);
                   <input id="cc-payment" placeholder="Enter The Quantity in Ltrs" min="1" name="qty" type="number" class="form-control" required  aria-invalid="false" onkeyup="check()" onchange="check()">
                  
                   <!-- <button type="submit" id="paymentclick" class="btn btn-primary" style="margin-top: -25%; margin-left: 105%;" name="submit" value="submit" onclick="pay_now()">Buy</button> -->
-                  <input type="submit" name="pay" class="btn btn-primary" style="margin-top: -25%; margin-left: 105%;" value="pay now">
-                 <br><span id="total">
+                  <input type="submit" name="pay" class="btn btn-primary" id="pay" style="margin-top: -25%; margin-left: 105%;" value="pay now">
+                 <br><span id="total" style="color:red;">
 
                  </span>
                  
@@ -284,39 +284,7 @@ $("#total").html(response);
             <div class="row m-t-30" style="width: 100%;">
               <div class="col-md-12">
                 <!-- DATA TABLE-->
-                <table class="table table-borderless table-data3">
-                  <thead>
-                      <tr>             
-                          <th>Sl_no</th>
-                          <th>Date</th>
-                          <th>Fuel Type</th>
-                          <th>Quantity</th>
-                          <th>Price</th>
-                          <th>Invoice</th>
-                          
-                      </tr>
-                  </thead>
-                  <?php
-                       $fuel = "SELECT * FROM `tbl_order` WHERE `user_id`='$userid' ORDER BY order_id DESC ";
-                      $result = mysqli_query($conn,$fuel);
-                      $i = 1;
-                      //  if($result->num-rows()>0){}
-                      while($row=mysqli_fetch_array($result)){  
-                  ?>
-                  <tbody>
-                      <tr>
-                          <td><?php echo $i; ?></td>
-                          <td><?php echo $row['date']; ?></td>
-                          <td><?php echo $row['fuel']; ?></td>
-                          <td><?php echo $row['quantity']; ?></td>
-                          <td><?php echo $row['price']; ?></td>
-                          <td><?php echo $row['price']; ?></td>
-                          
-                      </tr>
-                  </tbody>
-                  <?php    
-                  $i++;}?>
-                </table>
+                
                 <!-- END DATA TABLE-->
               </div>
             </div>

@@ -13,11 +13,20 @@ session_start();
         if($_POST['qty']>0){
         while($row=mysqli_fetch_array($result)){
             $price= $row['price']*$amt;
+            $q=$row['stock'];
+            if($q < $amt){
+                echo nl2br($price."\n not enough stock");
+               echo "<script>$('#pay').prop('disabled',true);</script>";
+            }
             // echo ("<script LANGUAGE='JavaScript'>
             //         window.alert('Total Price is:".$price."');
             //         window.location.href='orders.php';
             //         </script>");
-            echo $price;
+            else{
+                echo $price;
+                echo "<script>$('#pay').prop('disabled',false);</script>";
+            }
+           
                     
         }}
     }

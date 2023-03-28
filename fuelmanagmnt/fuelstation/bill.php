@@ -3,7 +3,10 @@
 include '../config.php';
 ?>
 <?php
-$fuel = "SELECT a.*, b.* FROM user a INNER JOIN tbl_order b ON a.user_id = b.user_id AND b.order_id='55'";
+if(isset($_POST['invoice']))
+{
+    $order_id = $_POST['order_id'];
+$fuel = "SELECT a.*, b.* FROM user a INNER JOIN tbl_order b ON a.user_id = b.user_id AND b.order_id='$order_id'";
 $result = mysqli_query($conn, $fuel);
 $row = mysqli_fetch_array($result);
 ?>
@@ -1111,13 +1114,13 @@ $row = mysqli_fetch_array($result);
                                         <div>
                                             <ul class="list-unstyled spaced">
                                                 <li>
-                                                    <i class="ace-icon fa fa-caret-right blue"></i>X fuels
+                                                    <i class="ace-icon fa fa-caret-right blue"></i> Company name: X fuels
                                                 </li>
                                                 <li>
-                                                    <i class="ace-icon fa fa-caret-right blue"></i>685514
+                                                    <i class="ace-icon fa fa-caret-right blue"></i> Pincode: 685514
                                                 </li>
                                                 <li>
-                                                    <i class="ace-icon fa fa-caret-right blue"></i>Kerala
+                                                    <i class="ace-icon fa fa-caret-right blue"></i> State: Kerala
                                                 </li>
                                                 <li>
                                                     <i class="ace-icon fa fa-caret-right blue"></i>
@@ -1126,8 +1129,7 @@ $row = mysqli_fetch_array($result);
                                                 </li>
                                                 <li class="divider"></li>
                                                 <li>
-                                                    <i class="ace-icon fa fa-caret-right blue"></i>
-                                                    Payment Info
+                                                    <b>Payment Info:</b>
                                                 </li>
                                             </ul>
                                         </div>
@@ -1141,17 +1143,17 @@ $row = mysqli_fetch_array($result);
                                         <div>
                                             <ul class="list-unstyled  spaced">
                                                 <li>
-                                                    <i class="ace-icon fa fa-caret-right green"></i>   <?=$row['fname']?>
+                                                    <i class="ace-icon fa fa-caret-right green"></i> Name:   <?=$row['fname']." ".$row['lname']?>
                                                 </li>
                                                 <li>
-                                                    <i class="ace-icon fa fa-caret-right green"></i>   <?=$row['email']?>
+                                                    <i class="ace-icon fa fa-caret-right green"></i> Email:   <?=$row['email']?>
                                                 </li>
                                                 <li>
-                                                    <i class="ace-icon fa fa-caret-right green"></i>   <?=$row['addresss']?>
+                                                    <i class="ace-icon fa fa-caret-right green"></i> Address:   <?=$row['addresss']?>
                                                 </li>
                                                 <li class="divider"></li>
                                                 <li>
-                                                    <i class="ace-icon fa fa-caret-right green"></i>
+                                                    <i class="ace-icon fa fa-caret-right green"></i> Mobile No.:
                                                     <?=$row['phone']?>
                                                 </li>
                                             </ul>
@@ -1197,13 +1199,15 @@ $row = mysqli_fetch_array($result);
                                             <span class="red"><?=$row['price']?></span>
                                         </h4>
                                     </div>
-                                    <div class="col-sm-7 pull-left"> Coins Rewarded:<?=$row['coin']?></div>
+                                    <!-- <div class="col-sm-7 pull-left"> Coins Rewarded:<?=$row['coin']?></div> -->
                                 </div>
                                 <div class="space-6"></div>
                                 <div class="well">
                                    <center> Thank you Visit Again!
                         
-                              
+                              <?php
+}
+?>
                                 </div>
                             </div>
                         </div>

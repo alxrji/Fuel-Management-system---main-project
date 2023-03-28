@@ -343,7 +343,7 @@ $dt= date('Y-m-d');
                             <h4 class="font-weight-bold mt-0 mb-4">Order History</h4>
                             <?php
                             
-                      while($row=mysqli_fetch_array($result)){
+                      while($row=mysqli_fetch_assoc($result)){
                         ?>
                             <div class="bg-white card mb-4 order-list shadow-sm">
                                 <div class="gold-members p-4">
@@ -353,6 +353,9 @@ $dt= date('Y-m-d');
                                         <a href="#">
                                         </a>
                                         <div class="media-body">
+                                          
+                                        <form action="bill.php" method="post">
+                                          <input type="hidden" name="order_id"value="<?php echo $row['order_id']; ?>"/>
                                             <a href="#">
                                                 <span class="float-right text-info">Fuel type : <?php echo $row['fuel']; ?> <i class="icofont-check-circled text-success"></i></span>
                                             </a>
@@ -367,11 +370,13 @@ $dt= date('Y-m-d');
                                             </p>
                                             <hr>
                                             <div class="float-right">
-                                                <a class="btn btn-sm btn-outline-primary" href="bill.php"><i class="icofont-headphone-alt"></i>INVOICE</a> 
-                                                <a class="btn btn-sm btn-primary" href="#"><i class="icofont-refresh"></i> REORDER</a>
+                                                <button class="btn btn-sm btn-outline-primary" name="invoice" value="<?php echo $row['order_id']; ?>"><i class="icofont-headphone-alt"></i>INVOICE</button>
+                                                <!-- <button class="btn btn-sm btn-primary" href="#"><i class="icofont-refresh"></i> REORDER</button> -->
                                             </div>
                                             <p class="mb-0 text-black text-primary pt-2"><span class="text-black font-weight-bold"> Total Paid:</span> <?php echo '₹'.$row['price']; ?>
-                                            </p>
+                                            
+                                            </form>
+                                          </p>
                                         </div>
                                     </div>
 
