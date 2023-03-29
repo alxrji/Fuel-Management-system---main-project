@@ -44,6 +44,15 @@ if(isset($_POST['login'])){
 			header("location: ../fuelstation/index.php");
            
         } 
+		else if($row['username'] == $user && $row['passwd'] == $password && $row['usertype'] == 3){
+            $_SESSION['username'] = $row['username'];
+			$_SESSION['log_id'] = $row['log_id'];
+			$_SESSION['passwd'] = $row['passwd'];
+            $_SESSION['usertype'] = $row['usertype'];
+            
+			header("location:../staff/index.php");
+           
+        } 
 
 }
 else{
