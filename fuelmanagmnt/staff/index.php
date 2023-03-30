@@ -1,7 +1,7 @@
 <?php
 include  '../config.php';
-// require 'fuel-session.php';
-// $name = $_SESSION['username'];
+require '../fuelstation/fuel-session.php';
+$name = $_SESSION['username'];
 date_default_timezone_set('Asia/Kolkata');
 $dt = date('Y-m-d');
 ?>

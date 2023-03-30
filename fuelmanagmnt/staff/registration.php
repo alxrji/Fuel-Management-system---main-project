@@ -34,7 +34,7 @@ if(isset($_POST['submit'])){
              $user_reg = "INSERT INTO `staff`(`log_id`, `fname`, `lname`, `email`,`phone`) VALUES ('$logid','$fname','$lname','$email','$phone')";
             $user_reg_query = mysqli_query($conn,$user_reg);
             echo'<script> alert ("Account created");</script>';
-            echo'<script>window.location.href="index.php";</script>';  
+            echo'<script>window.location.href="../index.php";</script>';  
           }
      
     
@@ -119,7 +119,7 @@ if(isset($_POST['submit'])){
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-lg-8 col-xl-6">
         <div class="card rounded-3">
-          <img src="images/staffreg.jpeg"
+          <img src="../images/staffreg.jpeg"
             class="w-100 img-fluid" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
             alt="Sample photo">
          

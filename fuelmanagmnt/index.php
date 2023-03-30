@@ -93,7 +93,7 @@ http://www.tooplate.com/view/2078-adventure
 					<li><a href="fuelstation/registration.php" class="">CUSTOMER REG</a></li>
 
 
-					<li><a href="customer/registration.php" class="smoothScroll">PUMP REG</a></li>
+					<li><a href="staff/registration.php" class="smoothScroll">STAFF REG</a></li>
 
 
 					<li><a href="#contact" class="smoothScroll">CONTACT</a></li>

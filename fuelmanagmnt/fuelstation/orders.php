@@ -1,52 +1,52 @@
 <?php
 include  '../config.php';
-  require 'fuel-session.php';
-  $name = $_SESSION['username'];
-  date_default_timezone_set("Asia/Calcutta");  
-  // $dt= date('Y-m-d');
-  // echo $dt;
-  if(isset($_POST['pay'])){
-    $ftype= $_POST['select'];
-    $amt= $_POST['qty'];
-    $dt= date('Y-m-d');
-    $uid=$_POST['uid'];
-    // echo "$ftype, $amt, $dt";
+require 'fuel-session.php';
+$name = $_SESSION['username'];
+date_default_timezone_set("Asia/Calcutta");
+// $dt= date('Y-m-d');
+// echo $dt;
+if (isset($_POST['pay'])) {
+  $ftype = $_POST['select'];
+  $amt = $_POST['qty'];
+  $dt = date('Y-m-d');
+  $uid = $_POST['uid'];
+  // echo "$ftype, $amt, $dt";
 
-    $fuel = "SELECT * FROM `fuel` WHERE `fuel_type`='$ftype' and `date`='$dt'";
-    $result = mysqli_query($conn,$fuel);
-    
-    $row=mysqli_fetch_array($result);
-    $price= $row['price']*$amt;
-$c=10*$amt;
-$user = "SELECT * FROM `user` WHERE `user_id`='$uid'";
-$resultu = mysqli_query($conn,$user);
+  $fuel = "SELECT * FROM `fuel` WHERE `fuel_type`='$ftype' and `date`='$dt'";
+  $result = mysqli_query($conn, $fuel);
 
-$rowu=mysqli_fetch_array($resultu);
-$co= $rowu['coin']; 
-$fco=$c+$co;
+  $row = mysqli_fetch_array($result);
+  $price = $row['price'] * $amt;
+  $c = 10 * $amt;
+  $user = "SELECT * FROM `user` WHERE `user_id`='$uid'";
+  $resultu = mysqli_query($conn, $user);
+
+  $rowu = mysqli_fetch_array($resultu);
+  $co = $rowu['coin'];
+  $fco = $c + $co;
 
 
-    $in="INSERT INTO `tbl_order`(`user_id`, `fuel`, `quantity`, `price`,`date`) VALUES ('$uid','$ftype','$amt','$price','$dt')";
-    $inr = mysqli_query($conn,$in);
-    if($inr==true){
-      $stock_update = "UPDATE `fuel` SET `stock`=`stock`-'$amt' WHERE `fuel_type`='$ftype' AND `stock`>0";
-      $stock_update_run = mysqli_query($conn, $stock_update);
-      $coin_update = "UPDATE `user` SET `coin`='$fco' WHERE `user_id`='$uid'";
-      $coin_update_run = mysqli_query($conn, $coin_update);
-      ?>
-      <script>
-        window.location.href="orders.php";
-        </script>
-        <?php
-    }
+  $in = "INSERT INTO `tbl_order`(`user_id`, `fuel`, `quantity`, `price`,`date`) VALUES ('$uid','$ftype','$amt','$price','$dt')";
+  $inr = mysqli_query($conn, $in);
+  if ($inr == true) {
+    $stock_update = "UPDATE `fuel` SET `stock`=`stock`-'$amt' WHERE `fuel_type`='$ftype' AND `stock`>0";
+    $stock_update_run = mysqli_query($conn, $stock_update);
+    $coin_update = "UPDATE `user` SET `coin`='$fco' WHERE `user_id`='$uid'";
+    $coin_update_run = mysqli_query($conn, $coin_update);
+?>
+    <script>
+      window.location.href = "orders.php";
+    </script>
+<?php
   }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <!-- Required meta tags-->
-  
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="au theme template">
@@ -81,8 +81,8 @@ $fco=$c+$co;
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.9/dist/sweetalert2.all.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 
 
 
@@ -110,9 +110,9 @@ $fco=$c+$co;
       <nav class="navbar-mobile">
         <div class="container-fluid">
           <ul class="navbar-mobile__list list-unstyled">
-          
+
             <li class="has-sub">
-            
+
               <a class="js-arrow" href="#">
                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
             </li>
@@ -142,32 +142,32 @@ $fco=$c+$co;
       <div class="menu-sidebar__content js-scrollbar1">
         <nav class="navbar-sidebar">
           <ul class="list-unstyled navbar__list">
-          <li class="active has-sub">
+            <li class="active has-sub">
               <a class="js-arrow" href="#">
                 <i class="fas fa-users"></i><?php echo $name; ?></a>
             </li>
-          
+
             <li class="has-sub">
               <a class="js-arrow" href="index.php">
                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
             </li>
             <li class="active has-sub">
               <a class="js-arrow" href="orders.php">
-              <i class="fas fa-shopping-cart"></i>Buy Fuel</a>
+                <i class="fas fa-shopping-cart"></i>Buy Fuel</a>
             </li>
             <li class="has-sub">
               <a class="js-arrow" href="orderhistory.php">
-              <i class='bi bi-bag-check-fill'></i>My Orders</a>
+                <i class='bi bi-bag-check-fill'></i>My Orders</a>
             </li>
             <li class="has-sub">
               <a class="js-arrow" href="fuelview.php">
-              <i class="fa fa-rupee"></i>Fuel Price</a>
+                <i class="fa fa-rupee"></i>Fuel Price</a>
             </li>
             <li class="has-sub">
               <a class="js-arrow" href="editprofile.php">
-              <i class="fas fa-user-edit"></i>Edit Profile</a>
+                <i class="fas fa-user-edit"></i>Edit Profile</a>
             </li>
-          
+
           </ul>
         </nav>
       </div>
@@ -178,30 +178,30 @@ $fco=$c+$co;
     <div class="page-container">
       <!-- HEADER DESKTOP-->
       <header class="header-desktop">
-      <div class="container-fluid mt-4 ms-3 ps-5 me-5">
-                              
-      <!-- <div style="margin-left: 900px; margin-top: 1.8%;"> -->
-        <?php
-          $log_id=$_SESSION['log_id'];
-          
-        $coin = "SELECT * FROM `user` WHERE log_id='$log_id'";
-                      $result128 = mysqli_query($conn,$coin);
-                     
-                      $row128=mysqli_fetch_array($result128);
-                      $coin8=$row128['coin'];
-                      $userid=$row128['user_id'];
-                      
-                      ?>
-      
-          <img src="images/icon/dollar.png" alt="" width="30px" height="30px" style="margin-left: 900px;"> <?php echo $coin8?>
-                
-      </div>
+        <div class="container-fluid mt-4 ms-3 ps-5 me-5">
+
+          <!-- <div style="margin-left: 900px; margin-top: 1.8%;"> -->
+          <?php
+          $log_id = $_SESSION['log_id'];
+
+          $coin = "SELECT * FROM `user` WHERE log_id='$log_id'";
+          $result128 = mysqli_query($conn, $coin);
+
+          $row128 = mysqli_fetch_array($result128);
+          $coin8 = $row128['coin'];
+          $userid = $row128['user_id'];
+
+          ?>
+
+          <img src="images/icon/dollar.png" alt="" width="30px" height="30px" style="margin-left: 900px;"> <?php echo $coin8 ?>
+
+        </div>
         <div class="section__content section__content--p30">
           <div class="container-fluid">
             <div class="header-wrap">
               <div class="header-button">
                 <div class="account-wrap">
-                  <div class="account-item clearfix js-item-menu"  style="margin-left: 950px;">
+                  <div class="account-item clearfix js-item-menu" style="margin-left: 950px;">
                     <div class="content">
                       <a class="js-acc-btn" href="#"><?php echo $name; ?></a>
                     </div>
@@ -209,7 +209,7 @@ $fco=$c+$co;
                       <div class="account-dropdown__footer">
                         <a href="logout.php">
                           <i class="zmdi zmdi-power"></i>Logout</a>
-                          
+
                       </div>
                     </div>
                   </div>
@@ -221,38 +221,46 @@ $fco=$c+$co;
       </header>
       <!-- HEADER DESKTOP-->
       <script>
-        function check(){
-          var fuel= document.getElementById("select").value;
-          var qty= document.getElementById("cc-payment").value;
-          
-          var data="fuel=" + fuel + "&qty= " + qty;
+        function check() {
+          var fuel = document.getElementById("select").value;
+          var qty = document.getElementById("cc-payment").value;
+
+          var data = "fuel=" + fuel + "&qty= " + qty;
           // alert(data);
           jQuery.ajax({
-url:"pricecal.php",
-type:"post",
-data:data,
-success:function(response){
-$("#total").html(response);
-}
+            url: "pricecal.php",
+            type: "post",
+            data: data,
+            success: function(response) {
+              // alert(response);
+              if (response.trim() === "Not enough stock") {
+                document.getElementById("total").innerHTML = response;
+                $('#pay').prop('disabled', true);
+            } else {
+                document.getElementById("total").innerHTML = response;
+                $('#pay').prop('disabled', false);
+            }
+              // $("#total").html(response);
+            }
 
           });
         }
-        </script>
+      </script>
 
       <!-- MAIN CONTENT-->
       <div class="main-content">
         <div class="section__content section__content--p30">
           <div class="container-fluid">
-          <!-- <?php  
-          date_default_timezone_set("Asia/Calcutta");   //India time (GMT+5:30)
-          echo date('d-m-Y H:i:s');
-          ?> -->
+            <!-- <?php
+                  date_default_timezone_set("Asia/Calcutta");   //India time (GMT+5:30)
+                  echo date('d-m-Y H:i:s');
+                  ?> -->
             <div class="row">
-              
+
               <form class="d-flex justify-content-center" action="" method="POST" id="order_form">
-              <!--  -->
+                <!--  -->
                 <div class="form-group mx-5">
-                  
+
                   <label for="cc-payment" class="control-label mb-1">Select Fuel:</label>
                   <div style="width: 150%;">
                     <select name="select" id="select" class="form-control" required>
@@ -263,34 +271,35 @@ $("#total").html(response);
                     </select>
                   </div>
                 </div>
-              
+
                 <div class="form-group" style="margin-left: 10%;">
-                <input type="hidden" value="<?php echo $userid  ?>" name="uid">
+                  <input type="hidden" value="<?php echo $userid  ?>" name="uid">
                   <label for="cc-payment" class="control-label mb-1">Quantity</label>
-                  <input id="cc-payment" placeholder="Enter The Quantity in Ltrs" min="1" name="qty" type="number" class="form-control" required  aria-invalid="false" onkeyup="check()" onchange="check()">
-                 
+                  <input id="cc-payment" placeholder="Enter The Quantity in Ltrs" min="1" name="qty" type="number" class="form-control" required aria-invalid="false" onkeyup="check()" onchange="check()">
+
                   <!-- <button type="submit" id="paymentclick" class="btn btn-primary" style="margin-top: -25%; margin-left: 105%;" name="submit" value="submit" onclick="pay_now()">Buy</button> -->
                   <input type="submit" name="pay" class="btn btn-primary" id="pay" style="margin-top: -25%; margin-left: 105%;" value="pay now">
-                 <br><span id="total" style="color:red;">
+                  <br><span id="total" style="color:red;">
 
-                 </span>
-                 
+                  </span>
+
               </form>
             </div>
             <div class="row m-t-30" style="width: 100%;">
               <div class="col-md-12">
-                <!-- DATA TABLE--> <div class="row">
-
-            <div class="row m-t-30" style="width: 100%;">
-              <div class="col-md-12">
                 <!-- DATA TABLE-->
-                
-                <!-- END DATA TABLE-->
-              </div>
-            </div>
+                <div class="row">
 
-            </div>
-    
+                  <div class="row m-t-30" style="width: 100%;">
+                    <div class="col-md-12">
+                      <!-- DATA TABLE-->
+
+                      <!-- END DATA TABLE-->
+                    </div>
+                  </div>
+
+                </div>
+
                 <!-- END DATA TABLE-->
               </div>
             </div>
@@ -368,36 +377,38 @@ document.getElementById('rzp-button1').onclick = function(e){
 
 </script> -->
 <script>
-    $(document).ready(function() {
-        $('#order_form').on('submit', function(e) {
-            e.preventDefault();
-            var formData = new FormData(this);
-            formData.append("pay", true);
-            var total = $('#total').text();
-            var options = {
-                "key": "rzp_test_SxxbqfYjeSQy3M",
-                "amount": total  * 100,
-                "currency": "INR",
-                "name": "FUEL",
-                "description": "Test Transaction",
-                "handler": function(response) {
-                    console.log(response);
-                    $.ajax({
-                        type: 'POST',
-                        url: 'orders.php',
-                        data: formData,
-                        processData: false,
-                        contentType: false,
-                        success: function(result) {
-                            window.location.href = "orders.php";
-                        }
-                    });
-                }
-            };
-            var rzp1 = new Razorpay(options);
-            rzp1.open();
-        });
+  $(document).ready(function() {
+    $('#order_form').on('submit', function(e) {
+      e.preventDefault();
+      var formData = new FormData(this);
+      formData.append("pay", true);
+      var total = $('#total').text();
+      // alert(total);
+      var options = {
+        "key": "rzp_test_SxxbqfYjeSQy3M",
+        "amount": total * 100,
+        "currency": "INR",
+        "name": "FUEL",
+        "description": "Test Transaction",
+        "handler": function(response) {
+          console.log(response);
+          $.ajax({
+            type: 'POST',
+            url: 'orders.php',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(result) {
+              window.location.href = "orders.php";
+            }
+          });
+        }
+      };
+      var rzp1 = new Razorpay(options);
+      rzp1.open();
     });
+  });
 </script>
+
 </html>
 <!-- end document-->

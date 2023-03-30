@@ -15,16 +15,10 @@ session_start();
             $price= $row['price']*$amt;
             $q=$row['stock'];
             if($q < $amt){
-                echo nl2br($price."\n not enough stock");
-               echo "<script>$('#pay').prop('disabled',true);</script>";
+                echo "Not enough stock";
             }
-            // echo ("<script LANGUAGE='JavaScript'>
-            //         window.alert('Total Price is:".$price."');
-            //         window.location.href='orders.php';
-            //         </script>");
             else{
                 echo $price;
-                echo "<script>$('#pay').prop('disabled',false);</script>";
             }
            
                     
