@@ -90,10 +90,10 @@ http://www.tooplate.com/view/2078-adventure
 
 					<li><a href="login/index.php" class="smoothScroll">LOGIN</a></li>
 					<li><a href="#about" class="smoothScroll">ABOUT</a></li>
-					<li><a href="fuelstation/registration.php" class="">CUSTOMER REG</a></li>
+					<li><a href="fuelstation/registration.php" class="">SIGN UP</a></li>
 
-
-					<li><a href="staff/registration.php" class="smoothScroll">STAFF REG</a></li>
+<!-- 
+					<li><a href="staff/registration.php" class="smoothScroll">STAFF REG</a></li> -->
 
 
 					<li><a href="#contact" class="smoothScroll">CONTACT</a></li>

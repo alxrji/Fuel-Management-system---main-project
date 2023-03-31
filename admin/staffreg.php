@@ -290,7 +290,7 @@ if (isset($_POST['regstaff'])) {
                           <?php
                           if ($row1['statuss'] == 1) {
                           ?>
-                            <button value=<?php echo $row1['log_id']; ?>" class="btn btn-outline-danger btn-sm">Block</button>
+                            <button value=<?php echo $row1['log_id']; ?> "class="btn btn-outline-danger btn-sm">Block</button>
                           <?php
                           } else {
                           ?>
