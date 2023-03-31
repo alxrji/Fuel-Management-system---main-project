@@ -116,6 +116,10 @@ if(isset($_POST['']))
               <a class="js-arrow" href="fuelorder.php">
               <i class="fas fa-shopping-cart"></i>Orders</a>
             </li>
+            <li class="has-sub">
+              <a class="js-arrow" href="staffreg.php">
+              <i class="fas fa-solid fa-id-badge"></i>Staff Registration</a>
+            </li>
           </ul>
         </nav>
       </div>

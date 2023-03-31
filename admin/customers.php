@@ -126,6 +126,10 @@ include '../config.php';
               <a class="js-arrow" href="fuelorder.php">
                 <i class="fas fa-users"></i>Orders</a>
             </li>
+            <li class="has-sub">
+              <a class="js-arrow" href="staffreg.php">
+                <i class="fas fa-users"></i>Staff Registration</a>
+            </li>
           </ul>
         </nav>
       </div>

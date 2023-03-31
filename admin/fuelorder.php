@@ -34,6 +34,10 @@ include '../config.php';
   <link href="vendor/slick/slick.css" rel="stylesheet" media="all">
   <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
   <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+  
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
+
+
   <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 
   <!-- Main CSS-->
@@ -115,6 +119,11 @@ include '../config.php';
             <li class="has-sub">
               <a class="js-arrow" href="fuelorder.php">
               <i class="fas fa-shopping-cart"></i>Orders</a>
+            </li>
+             <li class="has-sub">
+              <a class="js-arrow" href="staffreg.php">
+              <i class="fas fa-solid fa-id-badge"></i></i></i>Staff Registration</a>
+              
             </li>
           </ul>
         </nav>

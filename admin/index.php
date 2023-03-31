@@ -1,5 +1,6 @@
 <?php
 include 'admin-session.php';
+include '../config.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -118,6 +119,10 @@ include 'admin-session.php';
             <li class="has-sub">
               <a class="js-arrow" href="fuelorder.php">
                 <i class="fas fa-shopping-cart"></i>Orders</a>
+            </li>
+            <li class="has-sub">
+              <a class="js-arrow" href="staffreg.php">
+                <i class="fas fa-solid fa-id-badge"></i></i>Staff Registration</a>
             </li>
           </ul>
         </nav>

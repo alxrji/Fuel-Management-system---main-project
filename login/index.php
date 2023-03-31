@@ -2,7 +2,8 @@
 
 include '../config.php';
 session_start();
-session_unset();
+// session_unset();
+// session_destroy();
 if(isset($_POST['login'])){
     $user = $_POST['username'];
     $password = $_POST['passwd'];
@@ -122,7 +123,7 @@ else{
 							Password
 						</span>
 
-						<a href="#" class="txt2 bo1 m-l-5">
+						<a href="forgot.php" class="txt2 bo1 m-l-5">
 							Forgot?
 						</a>
 					</div>
