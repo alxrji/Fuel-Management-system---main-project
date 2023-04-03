@@ -2,6 +2,7 @@
 include  '../config.php';
 require '../fuelstation/fuel-session.php';
 $name = $_SESSION['username'];
+error_reporting(1); 
 date_default_timezone_set('Asia/Kolkata');
 $dt = date('Y-m-d');
 ?>
@@ -33,7 +34,7 @@ $dt = date('Y-m-d');
     <!-- Vendor CSS-->
     <link href="vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
     <link href="vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
-    <link href="vendor/wow/animate.css" rel="stylesheet" media="all">
+    <!-- <link href="vendor/wow/animate.css" rel="stylesheet" media="all"> -->
     <link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
     <link href="vendor/slick/slick.css" rel="stylesheet" media="all">
     <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
@@ -254,7 +255,7 @@ $dt = date('Y-m-d');
                     <ul class="list-unstyled navbar__list">
                         <li class="has-sub">
                             <a class="js-arrow" href="#">
-                                <!-- <i class='fas fa-user-circle'></i><?php echo $name; ?></a> -->
+
                         </li>
                         <li class="has-sub active">
                             <a class="js-arrow" href="orderhistory.php">
@@ -321,7 +322,7 @@ $dt = date('Y-m-d');
                     <div class="osahan-account-page-right shadow-sm bg-white p-4 h-100">
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane  fade  active show" id="orders" role="tabpanel" aria-labelledby="orders-tab">
-                                <h4 class="font-weight-bold mt-0 mb-4">Order History</h4>
+                                <h4 class="font-weight-bold mt-0 mb-4">User's Orders</h4>
                                 <?php
                                 if(isset($_POST['invoice'])){
                                     $orderid = $_POST['order_id'];
@@ -330,6 +331,7 @@ $dt = date('Y-m-d');
                                 }
                                 $query = "SELECT a.*,b.fname,b.lname,b.email FROM tbl_order a INNER JOIN user b ON a.user_id = b.user_id AND a.Invoice='0'";
                                 $query_run = mysqli_query($conn, $query);
+                                if(mysqli_num_rows($query_run)>0){
                                 while($row = mysqli_fetch_assoc($query_run)){
                                 ?>
                                 <div class="bg-white card mb-4 order-list shadow-sm">
@@ -385,6 +387,10 @@ $dt = date('Y-m-d');
 
                                 <?php
                                 }
+                            }
+                            else{
+                                echo '<center>No more orders</center>';
+                            }
                                 ?>
                             </div>
                         </div>

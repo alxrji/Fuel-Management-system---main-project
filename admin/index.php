@@ -52,7 +52,7 @@ include '../config.php';
         <div class="container-fluid">
           <div class="header-mobile-inner">
             <a class="logo" href="index.php">
-              <img src="images/icon/logo.png" alt="FUEL" />
+              <img src="images/icon/logo.png" alt="Xfuel" />
             </a>
             <button class="hamburger hamburger--slider" type="button">
               <span class="hamburger-box">
@@ -89,7 +89,7 @@ include '../config.php';
         </a> -->
         <img src="images/icon/logo.png" alt="" width="40px" height="40px">&ensp;
         <h1>
-          FUEL
+          Xfuel
         </h1>
       </div>
       <div class="menu-sidebar__content js-scrollbar1">

@@ -1,73 +1,6 @@
 <?php
-
-include '../config.php';
 session_start();
-// session_unset();
-// session_destroy();
-if(isset($_POST['login'])){
-    $user = $_POST['username'];
-    $password = $_POST['passwd'];
-    $login_check = "SELECT * FROM `login` WHERE username='$user' AND passwd='$password'";
-	$login_check_result = mysqli_query($conn, $login_check);
-	$rsltcheck = mysqli_num_rows($login_check_result);
-    $row = mysqli_fetch_array($login_check_result);
-    if($rsltcheck == 1){
-		$statuss=$row['statuss'];
-        $usertype=$row['usertype'];
-
-		if($statuss == 1){
-
-      if($row['username'] == $user && $row['passwd'] == $password && $row['usertype'] == 0){
-            $_SESSION['username'] = $row['username'];
-
-			$_SESSION['passwd'] = $row['passwd'];
-            $_SESSION['usertype'] = $row['usertype'];
-            
-			header("location:../admin/index.php");
-
-	  }
-        else if($row['username'] == $user && $row['passwd'] == $password && $row['usertype'] == 1){
-            $_SESSION['username'] = $row['username'];
-
-			$_SESSION['passwd'] = $row['passwd'];
-            $_SESSION['usertype'] = $row['usertype'];
-           
-			header("location: ../customer/index.php");
-           
-        } 
-
-		else if($row['username'] == $user && $row['passwd'] == $password && $row['usertype'] == 2){
-            $_SESSION['username'] = $row['username'];
-			$_SESSION['log_id'] = $row['log_id'];
-			$_SESSION['passwd'] = $row['passwd'];
-            $_SESSION['usertype'] = $row['usertype'];
-            
-			header("location: ../fuelstation/index.php");
-           
-        } 
-		else if($row['username'] == $user && $row['passwd'] == $password && $row['usertype'] == 3){
-            $_SESSION['username'] = $row['username'];
-			$_SESSION['log_id'] = $row['log_id'];
-			$_SESSION['passwd'] = $row['passwd'];
-            $_SESSION['usertype'] = $row['usertype'];
-            
-			header("location:../staff/index.php");
-           
-        } 
-
-}
-else{
-
-	echo '<script> alert ("Your account has been blocked\n\nPlease contact the administrator");</script>';
-	echo'<script>window.location.href="index.php";</script>';
-}
-}
-else{
-
-	echo '<script> alert ("Invalid credentials.");</script>';
-	echo'<script>window.location.href="index.php";</script>';
-}
-}
+session_destroy();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -104,7 +37,7 @@ else{
 		<div class="container-login100" style="background-image: url('../images/slider/thumb1 (2).jpg');">
 			<div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
 			<a href="../index.php"><img src="images/icons/favicon.ico" width="30px" height="30px" alt="Home"></a>
-				<form class="login100-form validate-form flex-sb flex-w" action="" method="POST">
+				<form class="login100-form validate-form flex-sb flex-w" action="logincheck.php" method="POST">
 					<span class="login100-form-title p-b-53">
 						Sign In
 					</span>

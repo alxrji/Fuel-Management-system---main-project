@@ -81,17 +81,16 @@ http://www.tooplate.com/view/2078-adventure
 					<span class="icon icon-bar"></span>
 					<span class="icon icon-bar"></span>
 				</button>
-				<a href="#home" class="smoothScroll navbar-brand" style="border: none;">FUEL MANAGEMENT SYSTEM</a>
+				<a href="#home" class="smoothScroll navbar-brand" style="border: none;">Xfuel</a>
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
-					
-
 					<!-- <li><a href="#home" class="smoothScroll">HOME</a></li> -->
 
 					<li><a href="login/index.php" class="smoothScroll">LOGIN</a></li>
-					<li><a href="#about" class="smoothScroll">ABOUT</a></li>
 					<li><a href="fuelstation/registration.php" class="">SIGN UP</a></li>
+					<li><a href="#about" class="smoothScroll">ABOUT</a></li>
+					
 
 <!-- 
 

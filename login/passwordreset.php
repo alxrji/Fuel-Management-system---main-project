@@ -7,7 +7,7 @@ if(isset($_POST['reset'])){
     $cpassword = $_POST['cpassword'];
 	$user=$_SESSION['user'];
 	if($password == $cpassword){
-		$debug->log($user);
+		// $debug->log($user);
 		$login_check = "UPDATE `login` SET `passwd`='$password' WHERE `username`='$user'";
 		$login_check_result = mysqli_query($conn, $login_check);
 		if($login_check_result){

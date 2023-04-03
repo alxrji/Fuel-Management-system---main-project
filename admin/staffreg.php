@@ -1,13 +1,30 @@
 <?php
 include 'admin-session.php';
 include '../config.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+require '../vendor/autoload.php';
 if (isset($_POST['regstaff'])) {
   $fname = $_POST['fname'];
   $lname = $_POST['lname'];
   $email = $_POST['email'];
   $phone = $_POST['phone'];
   $username = $fname . $lname . rand(111, 999);
-  $pass = rand(11111111, 99999999);
+  function randomPassword()
+  {
+    $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+    $pass = array(); //remember to declare $pass as an array
+    $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
+    for ($i = 0; $i < 8; $i++) {
+      $n = rand(0, $alphaLength);
+      $pass[] = $alphabet[$n];
+    }
+    return implode($pass); //turn the array into a string
+  }
+  $pass = randomPassword();
   $login_check = "SELECT * FROM `login` WHERE `username`='$username'";
   $login_check_result = mysqli_query($conn, $login_check);
   $rsltcheck = mysqli_num_rows($login_check_result);
@@ -21,6 +38,26 @@ if (isset($_POST['regstaff'])) {
       $stafftbl = "INSERT INTO `staff`(`log_id`, `fname`, `lname`, `phone`, `email`) VALUES ('$logid', '$fname', '$lname', '$phone', '$email')";
       $stafftbl_result = mysqli_query($conn, $stafftbl);
       if ($stafftbl_result) {
+        $mail = new PHPMailer(true);                     //Enable verbose debug output
+        $mail->isSMTP();                                            //Send using SMTP
+        $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+        $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+        $mail->Username   = 'developer.fuelmgmt@gmail.com';                     //SMTP username
+        $mail->Password   = 'zvjxmrfaxrlwqzix';                               //SMTP password
+        $mail->SMTPSecure = 'ssl';            //Enable implicit TLS encryption
+        $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+        //Recipients
+        $mail->setFrom('developer.fuelmgmt@gmail.com', 'X-FUEL');
+        $mail->addAddress($email);     //Add a recipient
+
+        //Content
+        $mail->isHTML(true);                                  //Set email format to HTML
+        $mail->Subject = 'Staff Login Credentials';
+        $mail->Body    = "<strong>Username: </strong>$username<br><br>
+    <strong>Password: $pass</strong>  ";
+
+        $mail->send();
       }
     }
   }
@@ -107,7 +144,7 @@ if (isset($_POST['regstaff'])) {
             </li>
             <li class="has-sub">
               <a class="js-arrow" href="fuelorder.php">
-                <i class="fas fa-users"></i>Orders</a>
+                <i class="fas fa-shopping-cart"></i>Orders</a>
             </li>
             <li class="has-sub active">
               <a class="js-arrow" href="staffreg.php">
@@ -127,7 +164,7 @@ if (isset($_POST['regstaff'])) {
         </a> -->
         <img src="images/icon/logo.png" alt="" width="40px" height="40px">&ensp;
         <h1>
-          FUEL
+          Xfuel
         </h1>
       </div>
       <div class="menu-sidebar__content js-scrollbar1">
@@ -152,7 +189,7 @@ if (isset($_POST['regstaff'])) {
 
             <li class="has-sub">
               <a class="js-arrow" href="fuelorder.php">
-                <i class="fas fa-users"></i>Orders</a>
+                <i class="fas fa-shopping-cart"></i>Orders</a>
             </li>
             <li class="has-sub active">
               <a class="js-arrow" href="staffreg.php">
@@ -163,14 +200,20 @@ if (isset($_POST['regstaff'])) {
       </div>
     </aside>
     <!-- END MENU SIDEBAR-->
-
+<style>
+  .parsley-required, .parsley-type, .parsley-pattern{
+    color: red;
+    margin-top: 10px;
+    list-style: none;
+  }
+</style>
     <!-- PAGE CONTAINER-->
     <div class="page-container">
       <!-- add-staff-modal -->
       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
-            <form action="" method="POST">
+            <form action="" method="POST" id="addstaff">
               <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Register New Staff</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -180,24 +223,23 @@ if (isset($_POST['regstaff'])) {
               <div class="modal-body">
                 <div class="form-group">
                   <label for="recipient-name" class="col-form-label">First Name:</label>
-                  <input type="text" class="form-control" id="recipient-name" name="fname">
+                  <input type="text" class="form-control" id="recipient-name" name="fname" required data-parsley-pattern="^[a-zA-Z\\s]*$">
                 </div>
                 <div class="form-group">
                   <label for="message-text" class="col-form-label">Last Name:</label>
-                  <input type="text" class="form-control" id="recipient-name" name="lname">
+                  <input type="text" class="form-control" id="recipient-name" name="lname" required data-parsley-pattern="^[a-zA-Z\\s]*$">
                 </div>
                 <div class="form-group">
                   <label for="message-text" class="col-form-label">Email:</label>
-                  <input type="email" class="form-control" id="recipient-name" name="email">
+                  <input type="email" class="form-control" id="recipient-name" name="email" required data-parsley-pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
                 </div>
                 <div class="form-group">
                   <label for="message-text" class="col-form-label">Phone:</label>
-                  <input type="number" class="form-control" id="recipient-name" name="phone">
+                  <input type="number" class="form-control" id="recipient-name" name="phone" required maxlength="10" data-parsley-pattern="^[6-9]\d{9}$" data-parsley-type="number">
                 </div>
 
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="submit" name="regstaff" class="btn btn-primary">Register</button>
               </div>
           </div>
@@ -272,7 +314,7 @@ if (isset($_POST['regstaff'])) {
                         <td><?php echo $i; ?></td>
                         <td><?php echo $row['fname'] . " " . $row['lname']; ?></td>
                         <td><?php echo $row['email']; ?></td>
-                        <td><?php echo $row['phone']; ?></td>                        
+                        <td><?php echo $row['phone']; ?></td>
                         <td><?php
                             $r = $row['log_id'];
                             $s = "SELECT statuss from login WHERE log_id='$r'";
@@ -288,13 +330,20 @@ if (isset($_POST['regstaff'])) {
                         </td>
                         <td>
                           <?php
+                          if (isset($_POST['block'])) {
+                            $userid = $_POST['block'];
+                            $query = "UPDATE `login` SET `statuss`='0' WHERE `log_id`='$userid'";
+                            $query_run = mysqli_query($conn, $query);
+                          }
                           if ($row1['statuss'] == 1) {
                           ?>
-                            <button value=<?php echo $row1['log_id']; ?> "class="btn btn-outline-danger btn-sm">Block</button>
+                            <form action="" method="post">
+                              <button type="submit" name="block" value="<?php echo $row1['log_id'] ?>" class="btn btn-outline-danger btn-sm">Block</button>
+                            </form>
                           <?php
                           } else {
                           ?>
-                            <a href="?unblock=<?php echo $row1['log_id']; ?>" class="btn btn-outline-success btn-sm">Unblock</a>
+
 
                           <?php
                           }
@@ -319,31 +368,6 @@ if (isset($_POST['regstaff'])) {
     </div>
 
   </div>
-
-  <?php
-  if (isset($_GET['block'])) {
-    $id = $_GET['block'];
-    $select_user = "SELECT `log_id` FROM `user` WHERE `user_id` = '$id'";
-    $select_user_result = mysqli_query($conn, $select_user);
-    $user = mysqli_fetch_array($select_user_result);
-    $logid = $user['log_id'];
-    $block = "UPDATE `login` SET `statuss`='0' WHERE `log_id` = '$logid'";
-    $block_run = mysqli_query($conn, $block);
-    echo '<script> alert ("Account blocked");</script>';
-    echo '<script>window.location.href="customers.php";</script>';
-  }
-  if (isset($_GET['unblock'])) {
-    $id = $_GET['unblock'];
-    $select_user = "SELECT `log_id` FROM `user` WHERE `user_id` = '$id'";
-    $select_user_result = mysqli_query($conn, $select_user);
-    $user = mysqli_fetch_array($select_user_result);
-    $logid = $user['log_id'];
-    $block = "UPDATE `login` SET `statuss`='1' WHERE `log_id` = '$logid'";
-    $block_run = mysqli_query($conn, $block);
-    echo '<script> alert ("Account unblocked");</script>';
-    echo '<script>window.location.href="customers.php";</script>';
-  }
-  ?>
   <!-- Jquery JS-->
   <script src="vendor/jquery-3.2.1.min.js"></script>
   <!-- Bootstrap JS-->
@@ -363,8 +387,12 @@ if (isset($_POST['regstaff'])) {
   <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
   <script src="vendor/chartjs/Chart.bundle.min.js"></script>
   <script src="vendor/select2/select2.min.js">
+  
   </script>
-
+<script src="js/parsley.js"></script>
+  <script>
+  $('#addstaff').parsley();
+</script>
   <!-- Main JS-->
   <script src="js/main.js"></script>
 
