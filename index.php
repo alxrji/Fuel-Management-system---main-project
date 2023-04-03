@@ -85,6 +85,7 @@ http://www.tooplate.com/view/2078-adventure
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
+					
 
 					<!-- <li><a href="#home" class="smoothScroll">HOME</a></li> -->
 
@@ -93,7 +94,7 @@ http://www.tooplate.com/view/2078-adventure
 					<li><a href="fuelstation/registration.php" class="">SIGN UP</a></li>
 
 <!-- 
-	
+
 					<li><a href="staff/registration.php" class="smoothScroll">STAFF REG</a></li> -->
 
 
