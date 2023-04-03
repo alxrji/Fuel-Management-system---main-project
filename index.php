@@ -81,7 +81,7 @@ http://www.tooplate.com/view/2078-adventure
 					<span class="icon icon-bar"></span>
 					<span class="icon icon-bar"></span>
 				</button>
-				<a href="#home" class="smoothScroll navbar-brand" style="border: none;">Xfuel</a>
+				<a href="#home" class="smoothScroll navbar-brand" style="border: none;">Xtra-fuel</a>
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
