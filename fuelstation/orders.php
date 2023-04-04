@@ -224,6 +224,9 @@ if (isset($_POST['pay'])) {
         function check() {
           var fuel = document.getElementById("select").value;
           var qty = document.getElementById("cc-payment").value;
+          var myCheckbox = document.getElementById("myCheckbox");
+var coin = document.getElementById("coin").value;
+
 
           var data = "fuel=" + fuel + "&qty= " + qty;
           // alert(data);
@@ -239,6 +242,11 @@ if (isset($_POST['pay'])) {
             } else {
                 document.getElementById("total").innerHTML = response;
                 $('#pay').prop('disabled', false);
+                if(coin > 1000){
+                myCheckbox.style.display = "inline-block";
+                document.getElementById("plac").innerHTML = "Redeem My coins ";
+                }
+
             }
               // $("#total").html(response);
             }
@@ -276,13 +284,63 @@ if (isset($_POST['pay'])) {
                   <input type="hidden" value="<?php echo $userid  ?>" name="uid">
                   <label for="cc-payment" class="control-label mb-1">Quantity</label>
                   <input id="cc-payment" placeholder="Enter The Quantity in Ltrs" min="1" name="qty" type="number" class="form-control" required aria-invalid="false" onkeyup="check()" onchange="check()">
-
+                 
+  <!-- <label for="myCheckbox">Checkbox</label> -->
                   <!-- <button type="submit" id="paymentclick" class="btn btn-primary" style="margin-top: -25%; margin-left: 105%;" name="submit" value="submit" onclick="pay_now()">Buy</button> -->
                   <input type="submit" name="pay" class="btn btn-primary" id="pay" style="margin-top: -25%; margin-left: 105%;" value="pay now">
+                  <!-- <input type="submit" name="cnf" class="btn btn-primary" id="cnf" style="margin-top: -25%; margin-left: 105%; display:none;" value="confirm order"> -->
                   <br><span id="total" style="color:red;">
 
                   </span>
+                  <input type="hidden" id="coin" name="coin" value="<?php echo $coin8; ?>">
+                  <br><br><span id="plac" >  </span> <input type="checkbox" id="myCheckbox" style="display:none;" >
+                  <script>
+  const myCheckbox = document.getElementById("myCheckbox");
 
+myCheckbox.addEventListener("change", function() {
+  if(this.checked) {
+    
+    myFunction();
+  }
+});
+
+function myFunction() {
+  
+var c = parseInt(document.getElementById("coin").value);
+var dp = parseInt(c / 10);
+var pay = document.getElementById("pay");
+var cnf = document.getElementById("cnf");
+document.getElementById("total").innerHTML = dp;
+
+var fuel = document.getElementById("select").value;
+          var qty = document.getElementById("cc-payment").value;
+          
+
+          var data = "fuel1=" + fuel + "&qty1= " + qty + "&dp= " + dp;
+          // alert(data);
+          jQuery.ajax({
+            url: "pricecal.php",
+            type: "post",
+            data: data,
+            success: function(response) {
+              // alert(response);
+              if (response.trim() === "0") {
+                document.getElementById("total").innerHTML = response;
+                pay.style.display = "none";
+                cnf.style.display = "inline-block";
+                $('#pay').prop('disabled', true);
+            } else {
+                document.getElementById("total").innerHTML = response;
+                $('#pay').prop('disabled', false);
+               
+
+            }
+              // $("#total").html(response);
+            }
+
+          });
+}
+</script>
               </form>
             </div>
             <div class="row m-t-30" style="width: 100%;">

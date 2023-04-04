@@ -4,6 +4,17 @@ require 'fuel-session.php';
 $name = $_SESSION['username'];
 date_default_timezone_set('Asia/Kolkata');
 $dt= date('Y-m-d');
+
+$log_id=$_SESSION['log_id'];
+
+$coin = "SELECT * FROM `user` WHERE log_id='$log_id'";
+            $result12 = mysqli_query($conn,$coin);
+         
+            $row12=mysqli_fetch_array($result12);
+            // $uid=$row12['user_id'];
+            $coin=$row12['coin'];
+            
+            
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,6 +53,140 @@ $dt= date('Y-m-d');
 
   <!-- Main CSS-->
   <link href="css/theme.css" rel="stylesheet" media="all">
+<style>::after
+
+
+.mt-100 {
+    margin-top: 100px
+}
+
+.container {
+    margin-top: 200px
+}
+
+.card {
+    position: relative;
+    display: flex;
+    width: 450px;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid #d2d2dc;
+    border-radius: 4px;
+    -webkit-box-shadow: 0px 0px 5px 0px rgb(249, 249, 250);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(212, 182, 212, 1);
+    box-shadow: 0px 0px 5px 0px rgb(161, 163, 164)
+}
+
+.card .card-body {
+    padding: 1rem 1rem
+}
+
+.card-body {
+    flex: 1 1 auto;
+    padding: 1.25rem
+}
+
+p {
+    font-size: 14px
+}
+
+h4 {
+    margin-top: 18px
+}
+
+.cross {
+    padding: 10px;
+    color: #d6312d;
+    cursor: pointer
+}
+
+.continue:focus {
+    outline: none
+}
+
+.continue {
+    border-radius: 5px;
+    text-transform: capitalize;
+    font-size: 13px;
+    padding: 8px 19px; 
+    cursor: pointer;
+    color: #fff;
+    background-color: #D50000
+}
+
+.continue:hover {
+    background-color: #D32F2F !important
+}
+</style>
+    <!-- Modal -->
+ 
+ <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Your Coins</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body  text-center" >
+      <img src="https://img.icons8.com/bubbles/200/000000/trophy.png">
+        <h4>CONGRATULATIONS!</h4>
+        <p>You have been personally awarded</p>
+        <img src="images/icon/dollar.png" alt="" width="30px" height="30px">
+        <?php echo $coin ?>
+        <br>
+        <p>You need 1000 to redeem RS.100</p>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <form action="orders.php" method="get">
+          <button type="submit" class="btn btn-secondary" >REDEEM</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="card">
+      <div class="text-right cross">
+        <i class="fa fa-times"></i>
+      </div>
+      <div class="card-body text-center">
+        <img src="https://img.icons8.com/bubbles/200/000000/trophy.png">
+        <h4>CONGRATULATIONS!</h4>
+        <p>You have been personally awarded</p>
+        <img src="images/icon/dollar.png" alt="" width="30px" height="30px">
+        <?php echo $coin ?>
+        <br>
+        <p>You need 1000 to redeem RS.100</p>
+        <?php
+        if($coin < 1000){
+          // do something if the user does not have enough coins
+        } else {
+        ?>
+      
+        <?php
+        }
+        ?>
+      </div>
+
+    </div>     
+  </div>
+  <div class="modal-footer" style="margin-left: 200px;">
+        
+        <form action="orders.php" method="get">
+          <button type="submit" class="btn btn-secondary" >REDEEM</button>
+        </form>
+      </div>
+</div>
+
 
 </head>
 
@@ -121,8 +266,8 @@ $dt= date('Y-m-d');
               <a class="js-arrow" href="editprofile.php">
                 <i class="fas fa-user-edit"></i>Edit Profile</a>
             </li>
-           
-          
+            <li class="has-sub">
+        
             </li>
           </ul>
         </nav>
@@ -135,25 +280,25 @@ $dt= date('Y-m-d');
       <!-- HEADER DESKTOP-->
       <header class="header-desktop">
         <div style="margin-left: 900px; margin-top: 1.8%;">
-        <?php
-          $log_id=$_SESSION['log_id'];
-          
-        $coin = "SELECT * FROM `user` WHERE log_id='$log_id'";
-                      $result12 = mysqli_query($conn,$coin);
-                     
-                      $row12=mysqli_fetch_array($result12);
-                      $coin=$row12['coin'];
-                      
-                      ?>
-      <img src="images/icon/dollar.png" alt="" width="30px" height="30px"> <?php echo $coin ?>
+      
 
+     
+      <!-- <img src="images/icon/dollar.png" alt="" width="30px" height="30px"> <?php echo $coin ?> -->
+     
+     
       </div>
+    
       <div class="section__content section__content--p30">
+      <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal" style="margin-left: 750px; margin-top: 50px;">
+      <img src="images/icon/dollar.png" alt="" width="30px" height="30px"> <?php echo $coin ?>
+</button>
           <div class="container-fluid">
             <div class="header-wrap">
               <div class="header-button">
                 <div class="account-wrap">
+         
                   <div class="account-item clearfix js-item-menu"  style="margin-left: 950px;">
+                 
                     <div class="content">
                       <a class="js-acc-btn" href="#"><?php echo $name; ?></a>
                     </div>
@@ -164,6 +309,10 @@ $dt= date('Y-m-d');
                       </div>
                     </div>
                   </div>
+
+
+                
+
                 </div>
               </div>
             </div>
@@ -280,10 +429,12 @@ $dt= date('Y-m-d');
     <!-- END MAIN CONTENT -->
                
     <!-- END MAIN CONTENT -->
-    <!-- END PAGE CONTAINER
+    <!-- END PAGE CONTAINER-->
     </div>
 
   </div> 
+  
+
 
   <!-- Jquery JS-->
     <script src="vendor/jquery-3.2.1.min.js"></script>
