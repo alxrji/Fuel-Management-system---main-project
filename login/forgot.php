@@ -23,7 +23,7 @@ if(isset($_POST['forgot'])){
         $mail->Host       = 'smtp.gmail.com';                 
         $mail->SMTPAuth   = true;                                  
         $mail->Username   = 'developer.fuelmgmt@gmail.com';                     
-        $mail->Password   = 'zvjxmrfaxrlwqzix';                              
+        $mail->Password   = 'ojyxidiefvuqwuuz';                              
         $mail->SMTPSecure = 'ssl';            
         $mail->Port       = 465;
         $mail->setFrom('developer.fuelmgmt@gmail.com', 'X-FUEL');

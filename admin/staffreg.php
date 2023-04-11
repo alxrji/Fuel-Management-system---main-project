@@ -39,11 +39,12 @@ if (isset($_POST['regstaff'])) {
       $stafftbl_result = mysqli_query($conn, $stafftbl);
       if ($stafftbl_result) {
         $mail = new PHPMailer(true);                     //Enable verbose debug output
-        $mail->isSMTP();                                            //Send using SMTP
+        $mail->isSMTP();             
+        $mail->SMTPDebug = SMTP::DEBUG_SERVER;                                //Send using SMTP
         $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
         $mail->Username   = 'developer.fuelmgmt@gmail.com';                     //SMTP username
-        $mail->Password   = 'zvjxmrfaxrlwqzix';                               //SMTP password
+        $mail->Password   = 'ojyxidiefvuqwuuz';                               //SMTP password
         $mail->SMTPSecure = 'ssl';            //Enable implicit TLS encryption
         $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
@@ -77,7 +78,6 @@ if (isset($_POST['regstaff'])) {
   <!-- Title Page-->
   <title>Staff registration</title>
   <link rel="icon" type="image/png" href="../admin/images/icon/logo.png" />
-
   <!-- Fontfaces CSS-->
   <link href="css/font-face.css" rel="stylesheet" media="all">
   <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
