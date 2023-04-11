@@ -1114,7 +1114,7 @@ $row = mysqli_fetch_array($result);
                                         <div>
                                             <ul class="list-unstyled spaced">
                                                 <li>
-                                                    <i class="ace-icon fa fa-caret-right blue"></i> Company name: X fuels
+                                                    <i class="ace-icon fa fa-caret-right blue"></i> Company name: Xtra-fuel
                                                 </li>
                                                 <li>
                                                     <i class="ace-icon fa fa-caret-right blue"></i> Pincode: 685514
