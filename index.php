@@ -81,7 +81,7 @@ http://www.tooplate.com/view/2078-adventure
 					<span class="icon icon-bar"></span>
 					<span class="icon icon-bar"></span>
 				</button>
-				<a href="#home" class="smoothScroll navbar-brand" style="border: none;">Xtra-fuel</a>
+				<a href="#home" class="smoothScroll navbar-brand" style="border: none; color:coral">Xtra-fuel</a>
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
@@ -127,7 +127,7 @@ http://www.tooplate.com/view/2078-adventure
 				
 				
 				<li>
-					<img src="images/slider/slide2 (2).jpg" alt="slider image 5">
+					<img src="images/slider/slide2 (3).jpg" alt="slider image 5">
 					<div class="container">
 						<div class="row">
 							<div class="col-md-12">

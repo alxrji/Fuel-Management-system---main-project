@@ -40,7 +40,7 @@ if (isset($_POST['regstaff'])) {
       if ($stafftbl_result) {
         $mail = new PHPMailer(true);                     //Enable verbose debug output
         $mail->isSMTP();             
-        $mail->SMTPDebug = SMTP::DEBUG_SERVER;                                //Send using SMTP
+        // $mail->SMTPDebug = SMTP::DEBUG_SERVER;                                //Send using SMTP
         $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
         $mail->Username   = 'developer.fuelmgmt@gmail.com';                     //SMTP username
