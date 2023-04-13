@@ -225,7 +225,7 @@ if (isset($_POST['pay'])) {
           var fuel = document.getElementById("select").value;
           var qty = document.getElementById("cc-payment").value;
           var myCheckbox = document.getElementById("myCheckbox");
-var coin = document.getElementById("coin").value;
+          var coin = document.getElementById("coin").value;
 
 
           var data = "fuel=" + fuel + "&qty= " + qty;
@@ -239,15 +239,15 @@ var coin = document.getElementById("coin").value;
               if (response.trim() === "Not enough stock") {
                 document.getElementById("total").innerHTML = response;
                 $('#pay').prop('disabled', true);
-            } else {
+              } else {
                 document.getElementById("total").innerHTML = response;
                 $('#pay').prop('disabled', false);
-                if(coin > 1000){
-                myCheckbox.style.display = "inline-block";
-                document.getElementById("plac").innerHTML = "Redeem My coins ";
+                if (coin > 1000) {
+                  myCheckbox.style.display = "inline-block";
+                  document.getElementById("plac").innerHTML = "Redeem My coins ";
                 }
 
-            }
+              }
               // $("#total").html(response);
             }
 
@@ -284,8 +284,8 @@ var coin = document.getElementById("coin").value;
                   <input type="hidden" value="<?php echo $userid  ?>" name="uid">
                   <label for="cc-payment" class="control-label mb-1">Quantity</label>
                   <input id="cc-payment" placeholder="Enter The Quantity in Ltrs" min="1" name="qty" type="number" class="form-control" required aria-invalid="false" onkeyup="check()" onchange="check()">
-                 
-  <!-- <label for="myCheckbox">Checkbox</label> -->
+
+                  <!-- <label for="myCheckbox">Checkbox</label> -->
                   <!-- <button type="submit" id="paymentclick" class="btn btn-primary" style="margin-top: -25%; margin-left: 105%;" name="submit" value="submit" onclick="pay_now()">Buy</button> -->
                   <input type="submit" name="pay" class="btn btn-primary" id="pay" style="margin-top: -25%; margin-left: 105%;" value="pay now">
                   <!-- <input type="submit" name="cnf" class="btn btn-primary" id="cnf" style="margin-top: -25%; margin-left: 105%; display:none;" value="confirm order"> -->
@@ -293,54 +293,54 @@ var coin = document.getElementById("coin").value;
 
                   </span>
                   <input type="hidden" id="coin" name="coin" value="<?php echo $coin8; ?>">
-                  <br><br><span id="plac" >  </span> <input type="checkbox" id="myCheckbox" style="display:none;" >
+                  <br><br><span id="plac"> </span> <input type="checkbox" id="myCheckbox" style="display:none;">
                   <script>
-  const myCheckbox = document.getElementById("myCheckbox");
+                    const myCheckbox = document.getElementById("myCheckbox");
 
-myCheckbox.addEventListener("change", function() {
-  if(this.checked) {
-    
-    myFunction();
-  }
-});
+                    myCheckbox.addEventListener("change", function() {
+                      if (this.checked) {
 
-function myFunction() {
-  
-var c = parseInt(document.getElementById("coin").value);
-var dp = parseInt(c / 10);
-var pay = document.getElementById("pay");
-var cnf = document.getElementById("cnf");
-document.getElementById("total").innerHTML = dp;
+                        myFunction();
+                      }
+                    });
 
-var fuel = document.getElementById("select").value;
-          var qty = document.getElementById("cc-payment").value;
-          
+                    function myFunction() {
 
-          var data = "fuel1=" + fuel + "&qty1= " + qty + "&dp= " + dp;
-          // alert(data);
-          jQuery.ajax({
-            url: "pricecal.php",
-            type: "post",
-            data: data,
-            success: function(response) {
-              // alert(response);
-              if (response.trim() === "0") {
-                document.getElementById("total").innerHTML = response;
-                pay.style.display = "none";
-                cnf.style.display = "inline-block";
-                $('#pay').prop('disabled', true);
-            } else {
-                document.getElementById("total").innerHTML = response;
-                $('#pay').prop('disabled', false);
-               
+                      var c = parseInt(document.getElementById("coin").value);
+                      var dp = parseInt(c / 10);
+                      var pay = document.getElementById("pay");
+                      var cnf = document.getElementById("cnf");
+                      document.getElementById("total").innerHTML = dp;
 
-            }
-              // $("#total").html(response);
-            }
+                      var fuel = document.getElementById("select").value;
+                      var qty = document.getElementById("cc-payment").value;
 
-          });
-}
-</script>
+
+                      var data = "fuel1=" + fuel + "&qty1= " + qty + "&dp= " + dp;
+                      // alert(data);
+                      jQuery.ajax({
+                        url: "pricecal.php",
+                        type: "post",
+                        data: data,
+                        success: function(response) {
+                          // alert(response);
+                          if (response.trim() === "0") {
+                            document.getElementById("total").innerHTML = response;
+                            pay.style.display = "none";
+                            cnf.style.display = "inline-block";
+                            $('#pay').prop('disabled', true);
+                          } else {
+                            document.getElementById("total").innerHTML = response;
+                            $('#pay').prop('disabled', false);
+
+
+                          }
+                          // $("#total").html(response);
+                        }
+
+                      });
+                    }
+                  </script>
               </form>
             </div>
             <div class="row m-t-30" style="width: 100%;">
@@ -396,44 +396,6 @@ var fuel = document.getElementById("select").value;
     <script src="js/main.js"></script>
     <!-- "key": "rzp_test_SxxbqfYjeSQy3M", -->
 </body>
-<!-- <script>
-    function pay_now(response){
-
-    var options = {
-    "key": "rzp_test_SxxbqfYjeSQy3M",
-    "amount": response*100,
-    "currency": "INR",
-    "name": "FUEL",
-    "description": "Test Transaction",
-    "handler":function(response){
-        console.log(response);
-        jQuery.ajax({
-            type:'POST',
-            url:'orders.php',
-            data:$('#order_form').serialize(),
-            success:function(result){
-              alert(result);
-                window.location.href="orders.php";
-            }
-
-        })
-        // if(response){
-        //     window.location.href="/adsol/index.php";
-        // }
-       
-
-    }
-};
-
-var rzp1 = new Razorpay(options);
-document.getElementById('rzp-button1').onclick = function(e){
-    rzp1.open();
-    e.preventDefault();
-}
-}
-
-
-</script> -->
 <script>
   $(document).ready(function() {
     $('#order_form').on('submit', function(e) {

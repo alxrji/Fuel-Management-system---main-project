@@ -36,7 +36,7 @@ include '../config.php';
   <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
   <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
   <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-  
+
 
   <!-- Main CSS-->
   <link href="css/theme.css" rel="stylesheet" media="all">
@@ -109,9 +109,9 @@ include '../config.php';
             </li>
             <li class="has-sub">
               <a class="js-arrow" href="fuels.php">
-              <i class='fas fa-gas-pump' style='font-size:20px'></i>Fuels</a>
+                <i class='fas fa-gas-pump' style='font-size:20px'></i>Fuels</a>
 
-              
+
 
 
             </li>
@@ -139,7 +139,7 @@ include '../config.php';
             <div class="header-wrap">
               <div class="header-button">
                 <div class="account-wrap">
-                  <div class="account-item clearfix js-item-menu" style="margin-left: 1000px;">
+                  <div class="account-item clearfix js-item-menu" style="margin-left: 1350px;">
                     <div class="content">
                       <a class="js-acc-btn" href="#">ADMIN</a>
                     </div>
@@ -168,7 +168,7 @@ include '../config.php';
                   <div class="overview__inner">
                     <div class="overview-box clearfix">
                       <div class="icon">
-                      <i class="bi bi-people-fill"></i>
+                        <i class="bi bi-people-fill"></i>
                       </div>
                       <?php
                       require '../config.php';
@@ -199,9 +199,9 @@ include '../config.php';
                       </div> -->
                       <!-- <img src="https://icons8.com/icon/8712/gas-station" alt=""> -->
                       <div class="icon">
-                      <i class="bi bi-fuel-pump"></i>
-                          <path d="M3 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-.5.5h-5a.5.5 0 0 1-.5-.5v-5Z" />
-                          <path d="M1 2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v8a2 2 0 0 1 2 2v.5a.5.5 0 0 0 1 0V8h-.5a.5.5 0 0 1-.5-.5V4.375a.5.5 0 0 1 .5-.5h1.495c-.011-.476-.053-.894-.201-1.222a.97.97 0 0 0-.394-.458c-.184-.11-.464-.195-.9-.195a.5.5 0 0 1 0-1c.564 0 1.034.11 1.412.336.383.228.634.551.794.907.295.655.294 1.465.294 2.081v3.175a.5.5 0 0 1-.5.501H15v4.5a1.5 1.5 0 0 1-3 0V12a1 1 0 0 0-1-1v4h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V2Zm9 0a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v13h8V2Z" />
+                        <i class="bi bi-fuel-pump"></i>
+                        <path d="M3 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-.5.5h-5a.5.5 0 0 1-.5-.5v-5Z" />
+                        <path d="M1 2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v8a2 2 0 0 1 2 2v.5a.5.5 0 0 0 1 0V8h-.5a.5.5 0 0 1-.5-.5V4.375a.5.5 0 0 1 .5-.5h1.495c-.011-.476-.053-.894-.201-1.222a.97.97 0 0 0-.394-.458c-.184-.11-.464-.195-.9-.195a.5.5 0 0 1 0-1c.564 0 1.034.11 1.412.336.383.228.634.551.794.907.295.655.294 1.465.294 2.081v3.175a.5.5 0 0 1-.5.501H15v4.5a1.5 1.5 0 0 1-3 0V12a1 1 0 0 0-1-1v4h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V2Zm9 0a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v13h8V2Z" />
                         </svg>
                       </div>
                       <?php
@@ -211,7 +211,7 @@ include '../config.php';
                       $count_petrol_count = mysqli_fetch_array($count_petrol_run);
                       ?>
                       <div class="text">
-                        <h2><?php echo "₹".$count_petrol_count['price'];
+                        <h2><?php echo "₹" . $count_petrol_count['price'];
                             ?></h2>
                         <span>Petrol</span>
                       </div>
@@ -228,16 +228,16 @@ include '../config.php';
                   <div class="overview__inner">
                     <div class="overview-box clearfix">
                       <div class="icon">
-                      <i class="bi bi-fuel-pump-diesel-fill"></i>
+                        <i class="bi bi-fuel-pump-diesel-fill"></i>
                       </div>
                       <div class="text">
-                      <?php
-                      require '../config.php';
-                      $count_Diesel = "SELECT * FROM `fuel` WHERE fuel_type='Diesel' ORDER BY `fid`DESC LIMIT 1 ";
-                      $count_Diesel_run = mysqli_query($conn, $count_Diesel);
-                      $count_Diesel_count = mysqli_fetch_array($count_Diesel_run);
-                      ?><h2><?php echo "₹". $count_Diesel_count['price'];
-                      ?></h2>
+                        <?php
+                        require '../config.php';
+                        $count_Diesel = "SELECT * FROM `fuel` WHERE fuel_type='Diesel' ORDER BY `fid`DESC LIMIT 1 ";
+                        $count_Diesel_run = mysqli_query($conn, $count_Diesel);
+                        $count_Diesel_count = mysqli_fetch_array($count_Diesel_run);
+                        ?><h2><?php echo "₹" . $count_Diesel_count['price'];
+                              ?></h2>
                         <span>DIESEL</span>
                       </div>
                     </div>
@@ -252,17 +252,17 @@ include '../config.php';
                   <div class="overview__inner">
                     <div class="overview-box clearfix">
                       <div class="icon">
-                      <i class="bi bi-fire"></i>
+                        <i class="bi bi-fire"></i>
                       </div>
                       <div class="text">
-                      <?php
-                      require '../config.php';
-                      $count_CNG = "SELECT * FROM `fuel` WHERE fuel_type='CNG' ORDER BY `fid`DESC LIMIT 1 ";
-                      $count_CNG_run = mysqli_query($conn, $count_CNG);
-                      $count_CNG_count = mysqli_fetch_array($count_CNG_run);
-                      ?>
-                        <h2><?php echo "₹". $count_CNG_count['price'];
-                      ?></h2>
+                        <?php
+                        require '../config.php';
+                        $count_CNG = "SELECT * FROM `fuel` WHERE fuel_type='CNG' ORDER BY `fid`DESC LIMIT 1 ";
+                        $count_CNG_run = mysqli_query($conn, $count_CNG);
+                        $count_CNG_count = mysqli_fetch_array($count_CNG_run);
+                        ?>
+                        <h2><?php echo "₹" . $count_CNG_count['price'];
+                            ?></h2>
                         <span>CNG</span>
                       </div>
                     </div>
@@ -271,20 +271,29 @@ include '../config.php';
                     </div>
                   </div>
                 </div>
-                
+
               </div>
-              
-            
+
+
             </div>
             <div class="row">
               <div class="col-md-12">
                 <div class="overview-wrap">
-                  <h2 class="title-1">Price Graph</h2>
+                  <!-- <h2 class="title-1">Price Graph</h2> -->
                 </div>
               </div>
             </div>
-            <div>
-              <canvas id="myChart"></canvas>
+            <div class="row">
+              <div class="col-6">
+                <h2 class="title-1">Price Graph</h2>
+                <!-- <div style="width: 50%;"> -->
+                <canvas id="myChart"></canvas>
+                <!-- </div> -->
+              </div>
+              <div class="col-6">
+                <h2 class="title-1">Monthly Sales Report</h2>
+                <canvas id="salehist"></canvas>
+              </div>
             </div>
             <!-- <div class="col-sm-6 col-lg-3">
                 <div class="overview-item overview-item--c3">
@@ -394,7 +403,7 @@ include '../config.php';
 
   </div> 
 
-  <!-- Jquery JS-->
+  <!-- Jquery JS -->
             <script src="vendor/jquery-3.2.1.min.js"></script>
             <!-- Bootstrap JS-->
             <script src="vendor/bootstrap-4.1/popper.min.js"></script>
@@ -421,32 +430,91 @@ include '../config.php';
 
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
             <?php
-            $date_query = "SELECT distinct date FROM fuel ORDER by date DESC LIMIT 7";
+            $date_query = "SELECT DISTINCT date FROM fuel ORDER BY date DESC LIMIT 7";
             $date_query_run = mysqli_query($conn, $date_query);
-            foreach ($date_query_run as $date) {
-              $ddate[] = $date['date'];
+            while ($date = mysqli_fetch_assoc($date_query_run)) {
+              $ddate[] = date('M d', strtotime($date['date']));
             }
-            $price_query = "SELECT price FROM fuel WHERE fuel_type='Petrol' LIMIT 7";
-            $price_query_run = mysqli_query($conn, $price_query);
-            foreach ($price_query_run as $price) {
+
+            $petrol_query = "SELECT price FROM fuel WHERE fuel_type='Petrol' ORDER BY date DESC LIMIT 7";
+            $petrol_query_run = mysqli_query($conn, $petrol_query);
+            while ($price = mysqli_fetch_assoc($petrol_query_run)) {
               $pprice[] = $price['price'];
             }
 
-            $diesel_price_query = "SELECT price FROM fuel WHERE fuel_type='Diesel' LIMIT 7";
-            $diesel_price_query_run = mysqli_query($conn, $diesel_price_query);
-            foreach ($diesel_price_query_run as $diesel_price) {
-              $dprice[] = $diesel_price['price'];
+            $diesel_query = "SELECT price FROM fuel WHERE fuel_type='Diesel' ORDER BY date DESC LIMIT 7";
+            $diesel_query_run = mysqli_query($conn, $diesel_query);
+            while ($price = mysqli_fetch_assoc($diesel_query_run)) {
+              $dprice[] = $price['price'];
             }
 
-            $cng_price_query = "SELECT price FROM fuel WHERE fuel_type='CNG' LIMIT 7";
-            $cng_price_query_run = mysqli_query($conn, $cng_price_query);
-            foreach ($cng_price_query_run as $cng_price) {
-              $cprice[] = $cng_price['price'];
+            $cng_query = "SELECT price FROM fuel WHERE fuel_type='CNG' ORDER BY date DESC LIMIT 7";
+            $cng_query_run = mysqli_query($conn, $cng_query);
+            while ($price = mysqli_fetch_assoc($cng_query_run)) {
+              $cprice[] = $price['price'];
             }
+
+            $month_query = "SELECT DISTINCT MONTH(date) as month FROM tbl_order ORDER BY date DESC LIMIT 7";
+            $month_query_run = mysqli_query($conn, $month_query);
+            foreach ($month_query_run as $month) {
+              $months[] = date('F', mktime(0, 0, 0, $month['month'], 1));
+            }
+
+            $petrol_hist_query = "SELECT SUM(price) as total FROM tbl_order WHERE fuel='Petrol' AND Invoice='1' GROUP BY MONTH(date) ORDER BY date DESC LIMIT 7";
+            $petrol_hist_run = mysqli_query($conn, $petrol_hist_query);
+            foreach ($petrol_hist_run as $phist) {
+              $pthist[] = $phist['total'];
+            }
+
+            $diesel_hist_query = "SELECT SUM(price) as total FROM tbl_order WHERE fuel='Diesel' AND Invoice='1' GROUP BY MONTH(date) ORDER BY date DESC LIMIT 7";
+            $diesel_hist_run = mysqli_query($conn, $diesel_hist_query);
+            foreach ($diesel_hist_run as $dhist) {
+              $dthist[] = $dhist['total'];
+            }
+
+            $cng_hist_query = "SELECT SUM(price) as total FROM tbl_order WHERE fuel='CNG' AND Invoice='1' GROUP BY MONTH(date) ORDER BY date DESC LIMIT 7";
+            $cng_hist_run = mysqli_query($conn, $cng_hist_query);
+            foreach ($cng_hist_run as $chist) {
+              $cthist[] = $chist['total'];
+            }
+
+            $datasets = array();
+
+            if (!empty($pthist)) {
+              $petrol_data = array(
+                'label' => 'Petrol',
+                'data' => $pthist,
+                'borderWidth' => 2
+              );
+              array_push($datasets, $petrol_data);
+            }
+
+            if (!empty($dthist)) {
+              $diesel_data = array(
+                'label' => 'Diesel',
+                'data' => $dthist,
+                'borderWidth' => 2
+              );
+              array_push($datasets, $diesel_data);
+            }
+
+            if (!empty($cthist)) {
+              $cng_data = array(
+                'label' => 'CNG',
+                'data' => $cthist,
+                'borderWidth' => 2
+              );
+              array_push($datasets, $cng_data);
+            }
+
+            $chart_data = array(
+              'labels' => $months,
+              'datasets' => $datasets
+            );
             ?>
             <script>
               const ctx = document.getElementById('myChart');
-
+              const barchrt = document.getElementById('salehist');
               new Chart(ctx, {
                 type: 'line',
                 data: {
@@ -468,13 +536,18 @@ include '../config.php';
                     }
                   ]
                 },
-                options: {
-                  scales: {
-                    y: {
-                      beginAtZero: true
-                    }
-                  }
-                }
+                // options: {
+                //   scales: {
+                //     y: {
+                //       beginAtZero: true
+                //     }
+                //   }
+                // }
+              });
+
+              new Chart(barchrt, {
+                type: 'bar',
+                data: <?php echo json_encode($chart_data); ?>,
               });
             </script>
 
