@@ -51,5 +51,26 @@ session_start();
                     
         }}
     }
+    if(isset($_POST['prc'])){
+        $ftype= $_POST['fuelt'];
+        $amt= $_POST['prc'];
+        $dt= date('Y-m-d');
+        // echo "$ftype, $amt, $dt";
 
+        $fuel = "SELECT * FROM `fuel` WHERE `fuel_type`='$ftype' and `date`='$dt'";
+        $result = mysqli_query($conn,$fuel);
+        if($_POST['prc']>0){
+        while($row=mysqli_fetch_array($result)){
+            $qt=$amt/$row['price'];
+            $q=$row['stock'];
+            if($q < $amt){
+                echo "Not enough stock";
+            }
+            else{
+                echo $qt;
+            }
+           
+                    
+        }}
+    }
 ?>

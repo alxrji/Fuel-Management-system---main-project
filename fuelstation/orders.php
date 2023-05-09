@@ -248,7 +248,40 @@ if (isset($_POST['pay'])) {
                 }
 
               }
-              // $("#total").html(response);
+            
+            }
+
+          });
+        }
+
+        function checkprc() {
+          var fuel = document.getElementById("select").value;
+          var prc = document.getElementById("cc-prc").value;
+          // var myCheckbox = document.getElementById("myCheckbox");
+          // var coin = document.getElementById("coin").value;
+
+
+          var data = "fuelt=" + fuel + "&prc= " + prc;
+          // alert(data);
+          jQuery.ajax({
+            url: "pricecal.php",
+            type: "post",
+            data: data,
+            success: function(response) {
+              // alert(response);
+              if (response.trim() === "Not enough stock") {
+                document.getElementById("total").innerHTML = response;
+                $('#pay').prop('disabled', true);
+              } else {
+                document.getElementById("total").innerHTML = response;
+                $('#pay').prop('disabled', false);
+                // if (coin > 1000) {
+                //   myCheckbox.style.display = "inline-block";
+                //   document.getElementById("plac").innerHTML = "Redeem My coins ";
+                // }
+
+              }
+            
             }
 
           });
@@ -282,9 +315,11 @@ if (isset($_POST['pay'])) {
 
                 <div class="form-group" style="margin-left: 10%;">
                   <input type="hidden" value="<?php echo $userid  ?>" name="uid">
-                  <label for="cc-payment" class="control-label mb-1">Quantity</label>
-                  <input id="cc-payment" placeholder="Enter The Quantity in Ltrs" min="1" name="qty" type="number" class="form-control" required aria-invalid="false" onkeyup="check()" onchange="check()">
-
+                  <input type="radio" name="myRadio" value="option1">Price<br>
+<input type="radio" name="myRadio" value="option2">Quantity<br>
+                  <!-- <label for="cc-payment" class="control-label mb-1">Quantity</label> -->
+                  <input id="cc-payment" placeholder="Enter The Quantity in Ltrs" min="1" name="qty"   type="number" class="form-control" required aria-invalid="false" onkeyup="check()" onchange="check()" style="display:none;">
+                  <input id="cc-prc" placeholder="Enter The Price" min="1" name="prc"   type="number" class="form-control" required aria-invalid="false" onkeyup="checkprc()" onchange="checkprc()" style="display:none;">
                   <!-- <label for="myCheckbox">Checkbox</label> -->
                   <!-- <button type="submit" id="paymentclick" class="btn btn-primary" style="margin-top: -25%; margin-left: 105%;" name="submit" value="submit" onclick="pay_now()">Buy</button> -->
                   <input type="submit" name="pay" class="btn btn-primary" id="pay" style="margin-top: -25%; margin-left: 105%;" value="pay now">
@@ -295,6 +330,26 @@ if (isset($_POST['pay'])) {
                   <input type="hidden" id="coin" name="coin" value="<?php echo $coin8; ?>">
                   <br><br><span id="plac"> </span> <input type="checkbox" id="myCheckbox" style="display:none;">
                   <script>
+                    const radioButtons = document.querySelectorAll('input[name="myRadio"]');
+
+radioButtons.forEach((radioButton) => {
+  radioButton.addEventListener('change', (event) => {
+    var val = event.target.value;
+    var qty = document.getElementById("cc-payment");
+    var prc = document.getElementById("cc-prc");
+    if (val === "option2") {
+      qty.style.display = "inline-block";
+    } else {
+      qty.style.display = "none";
+    }
+    if (val === "option1") {
+      prc.style.display = "inline-block";
+    } else {
+      prc.style.display = "none";
+    }
+  });
+});
+
                     const myCheckbox = document.getElementById("myCheckbox");
 
                     myCheckbox.addEventListener("change", function() {
@@ -402,6 +457,7 @@ if (isset($_POST['pay'])) {
       e.preventDefault();
       var formData = new FormData(this);
       formData.append("pay", true);
+      
       var total = $('#total').text();
       // alert(total);
       var options = {
