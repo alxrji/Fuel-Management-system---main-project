@@ -157,6 +157,18 @@ include '../config.php';
         </div>
       </header>
       <!-- HEADER DESKTOP-->
+      <?php
+      // Make a GET request to the Flask endpoint
+      $url = 'http://localhost:5000/predict';
+      $data = file_get_contents($url);
+
+      // Decode the JSON response
+      $response = json_decode($data, true);
+
+      // Print the predicted prices
+
+
+      ?>
 
       <!-- MAIN CONTENT-->
       <div class="main-content">
@@ -186,7 +198,7 @@ include '../config.php';
                     <div class="overview-chart">
                       <!-- <canvas id="widgetChart1"></canvas> -->
                     </div>
-                  </div>
+                  </div><br><br>
                 </div>
               </div>
 
@@ -213,7 +225,9 @@ include '../config.php';
                       <div class="text">
                         <h2><?php echo "₹" . $count_petrol_count['price'];
                             ?></h2>
-                        <span>Petrol</span>
+                        <span>Petrol</span><br><br>
+                        <span>Predicted Price: </span>
+                        <h2><?php echo number_format($response['petrol_price']) ; ?></h2>
                       </div>
                     </div>
 
@@ -238,7 +252,9 @@ include '../config.php';
                         $count_Diesel_count = mysqli_fetch_array($count_Diesel_run);
                         ?><h2><?php echo "₹" . $count_Diesel_count['price'];
                               ?></h2>
-                        <span>DIESEL</span>
+                        <span>DIESEL</span><br><br>
+                        <span>Predicted Price: </span>
+                        <h2><?php echo number_format($response['diesel_price'], 2); ?></h2>
                       </div>
                     </div>
                     <div class="overview-chart">
@@ -263,7 +279,9 @@ include '../config.php';
                         ?>
                         <h2><?php echo "₹" . $count_CNG_count['price'];
                             ?></h2>
-                        <span>CNG</span>
+                        <span>CNG</span><br><br>
+                        <span>Predicted Price: </span>
+                        <h2><?php echo number_format($response['cng_price']); ?></h2>
                       </div>
                     </div>
                     <div class="overview-chart">

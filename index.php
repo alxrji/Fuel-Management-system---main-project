@@ -24,6 +24,12 @@ http://www.tooplate.com/view/2078-adventure
 	<!-- Bootstrap CSS
    ================================================== -->
 	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
 
 	<!-- Animate CSS
    ================================================== -->
@@ -81,15 +87,15 @@ http://www.tooplate.com/view/2078-adventure
 					<span class="icon icon-bar"></span>
 					<span class="icon icon-bar"></span>
 				</button>
-				<a href="#home" class="smoothScroll navbar-brand" style="border: none; color:coral">Xtra-fuel</a>
+				<a href="#home" class="smoothScroll navbar-brand" style="border: none; color:white;font-family:'Orbitron'">Xtra-fuel</a>
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
 					<!-- <li><a href="#home" class="smoothScroll">HOME</a></li> -->
 
-					<li><a href="login/index.php" class="smoothScroll">LOGIN</a></li>
-					<li><a href="fuelstation/registration.php" class="">SIGN UP</a></li>
-					<li><a href="#about" class="smoothScroll">ABOUT</a></li>
+					<li><a href="login/index.php" class="smoothScroll"style="font-family: 'Righteous', cursive;">LOGIN</a></li>
+					<li><a href="fuelstation/registration.php" class=""style="font-family: 'Righteous', cursive;">SIGN UP</a></li>
+					<li><a href="#about" class="smoothScroll"style="font-family: 'Righteous', cursive;">ABOUT</a></li>
 					
 
 <!-- 
@@ -97,7 +103,7 @@ http://www.tooplate.com/view/2078-adventure
 					<li><a href="staff/registration.php" class="smoothScroll">STAFF REG</a></li> -->
 
 
-					<li><a href="#contact" class="smoothScroll">CONTACT</a></li>
+					<li><a href="#contact" class="smoothScroll"style="font-family: 'Righteous', cursive;">CONTACT</a></li>
 				</ul>
 			</div>
 
@@ -125,22 +131,9 @@ http://www.tooplate.com/view/2078-adventure
 				</li>
 				
 				
-				
+<!-- 			 -->
 				<li>
-					<img src="images/slider/slide2 (3).jpg" alt="slider image 5">
-					<div class="container">
-						<div class="row">
-							<div class="col-md-12">
-								<div class="slider-caption">
-									<h2></h2>
-									<p class="color-white">.</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</li>
-				<li>
-					<img src="images/slider/slide2 (2).jpg" alt="slider image 5">
+					<img src="images/slider/slide2(2).jpg" alt="slider image 5">
 					<div class="container">
 						<div class="row">
 							<div class="col-md-12">
