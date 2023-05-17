@@ -76,7 +76,7 @@ session_destroy();
 							Not a member?
 						</span>
 
-						<a href="../customer/registration.php" class="txt2 bo1">
+						<a href="../fuelstation/registration.php" class="txt2 bo1">
 							Sign up now
 						</a>
 					</div>
